@@ -1,2 +1,41 @@
-py/alertz/CHANGES
+~/dev/py/alertz/CHANGES
+
+v0.2.0
+    2016-02-18
+        * convert to Python3                                        SLOC  857
+v0.1.5
+    2013-01-08
+        * alertzProtoSpec added to module list in setup.py          SLOC  769
+v0.1.4
+    2012-12-21
+        * isolated (didn't fix) code causing segfaults on stockton  SLOC  714
+    2012-12-19
+        * testWithDummyClient: logging works                        SLOC  655
+        * added and tested daemon.clearLogs                         SLOC  667
+        * settable field values (MSG.FIELD = val) might be of value
+        * added various new alertzProtoSpec message types           SLOC  723
+v0.1.3
+    2012-12-19
+        * testWithDummyClient: messages parsed correctly            SLOC  649
+    2012-12-18
+        * testWithDummyClient: daemon gets messages                 SLOC  638
+    2012-12-09
+        * added chanIO.py                                           SLOC  619
+        * added chanIO.py; fleshing out daemon.py                   SLOC  627
+v0.1.2
+    2012-12-08
+        * added shutdown message to protocol
+        * all three message types in testAlertSerialization 
+        * msg types code added to testWithDummyClient, no threads   SLOC  560
+        * daemon code moved to alertz.daemon                        SLOC  565
+v0.1.1
+    2012-12-07
+        * added timestamp and sequence number to messages           SLOC  301
+        * added Namespace and testNamespace.py                      SLOC  425
+        * skeletal testWithDummyClient working, no threads          SLOC  431
+v0.1.0
+    2012-12-07
+        * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
+    2012-12-06
+        * hacked from pzog                                          SLOC  158
 
