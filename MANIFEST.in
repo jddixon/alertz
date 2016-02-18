@@ -1,0 +1,11 @@
+# see http://docs.python.org/distutils/sourcedist.html
+
+include netDistrib.conf
+include CHANGES README* TODO MANIFEST.in
+include alertzd alertzProto.py test*.py
+recursive-include alertz *.py
+
+global-exclude junk* .*swp 
+prune   .svn
+
+

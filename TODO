@@ -1,2 +1,47 @@
-py/alertz/TODO
+~/dev/py/alertz/TODO
 
+2013-01-29
+    * found using netstat -nr that LG had no default route; installed
+        one using route add default gw 192.168.1.254
+
+2013-01-08
+    * NameSpace has been moved into a separate package (xlutil), should 
+        be dropped from here 
+2012-12-21
+    * segfault seen during each alertz/testWithDummyClient run on 
+        stockton
+        - no similar behavior on PA
+        - libev on stockton is 404 as expected
+        - serverutil on stockton is current (2.1.6)
+        - on stockton serverutil/testAll succeed
+        - Python docs warn that 'foreign' threads might create 'thread
+            objects' which will not participate in joins
+        - on stockton, messages after "DESTROYING event loop" do not
+            appear.  These are 
+                "... event loop destroyed
+                "JOIN COMPLETE
+                "ABOUT TO ACTUALLY CLOSE LOG FILE 0
+                ...
+                "*** cLog deallocated desc2 successfully ***"
+                ...
+        - segfault is in serverutil's modFunc.d, about line 78, at
+            ev_loop_destroy(loop) invocation
+    * possibly unrelated: "WAITING FOR CONNECTION
+        "(libev) cannot allocate 2147483632 bytes, aborting"
+        - this value is 2GB less 16B
+        - this began occurring after a sleep for 150 ms right after
+            daemonT.start() was commented out
+    * WORKED AROUND THIS by commenting out options.logMgr.close()
+
+2012-12-19
+    * tidy up and generally shrink the code
+    * add an application that lazily builds a web page whenever the 
+        log has changed
+    * then add a web server to display the web page
+    * install alertzd on test, listening on 55555
+    * test client can run on uhm supermicro
+2012-12-08
+    * verify that shutdown message works with zero- and non-zero-length
+        remarks
+    * modify testAlertzSer to have client just send shutdown message;
+        that should work

@@ -1,0 +1,4 @@
+./testAlertzProto.py
+./testAlertzSerialization.py
+./testNamespace.py
+./testWithDummyClient.py
