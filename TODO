@@ -1,5 +1,8 @@
 ~/dev/py/alertz/TODO
 
+2016-02-19
+    * surely fieldz.chan should be name fieldz.channel ...
+
 2013-01-29
     * found using netstat -nr that LG had no default route; installed
         one using route add default gw 192.168.1.254
