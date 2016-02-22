@@ -1,7 +1,7 @@
 # ~/dev/py/alertz/alertz/__init__.py
 
-__version__      = '0.2.0'
-__version_date__ = '2016-02-18'
+__version__      = '0.2.1'
+__version_date__ = '2016-02-22'
 
 __all__ = [ '__version__', '__version_date__',
             'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
@@ -13,9 +13,10 @@ __all__ = [ '__version__', '__version_date__',
 
 from io     import StringIO
 
-import fieldz.fieldTypes    as F
-import fieldz.msgSpec       as M
-import fieldz.typed         as T
+import fieldz
+from fieldz import fieldTypes    as F
+from fieldz import msgSpec       as M
+from fieldz import typed         as T
 
 from alertzProtoSpec    import ALERTZ_PROTO_SPEC
 from fieldz.parser      import StringProtoSpecParser
@@ -55,5 +56,6 @@ class Namespace(dict):
 
     def __setattr__(self, name, value):
         self[name] = value
+
 
 

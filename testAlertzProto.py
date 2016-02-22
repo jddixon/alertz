@@ -1,9 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # ~/dev/py/fieldz/testAlertzProto.py
 
 import time, unittest
 from io import StringIO
+
+# import fieldz
+from fieldz import parser
 
 from fieldz.parser import StringProtoSpecParser
 import fieldz.fieldTypes    as F
