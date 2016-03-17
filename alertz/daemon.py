@@ -1,42 +1,48 @@
 # ~/dev/py/alertz/alertz/daemon.py
 
-__all__ = [ 'clearLogs', 'runTheDaemon',
-          ]
+__all__ = ['clearLogs', 'runTheDaemon',
+           ]
 
-import os, socket, sys, time
+import os
+import socket
+import sys
+import time
 import serverutil
-from io                 import StringIO
+from io import StringIO
 
-import fieldz.fieldTypes    as F
-import fieldz.msgSpec       as M
-import fieldz.typed         as T
+import fieldz.fieldTypes as F
+import fieldz.msgSpec as M
+import fieldz.typed as T
 
-from alertz             import *
-from alertz.chanIO      import *
+from alertz import *
+from alertz.chanIO import *
 
-from alertzProtoSpec    import ALERTZ_PROTO_SPEC
-from fieldz.parser      import StringProtoSpecParser
-from fieldz.chan        import Channel
-from fieldz.msgImpl     import makeMsgClass, makeFieldClass, MsgImpl
+from alertzProtoSpec import ALERTZ_PROTO_SPEC
+from fieldz.parser import StringProtoSpecParser
+from fieldz.chan import Channel
+from fieldz.msgImpl import makeMsgClass, makeFieldClass, MsgImpl
 
 # DAEMON ------------------------------------------------------------
+
+
 def clearLogs(options):
     logDir = options.logDir
     print("DEBUG: clearLogs, logDir = '%s'" % logDir)
     if os.path.exists(logDir):
         if logDir.startswith('/') or logDir.startswith('..'):
-            raise RuntimeError ( "cannot delete %s/*" % logDir )
+            raise RuntimeError("cannot delete %s/*" % logDir)
         files = os.listdir(logDir)
         if files:
             if options.verbose:
                 print("found %u files" % len(files))
             for file in files:
-                os.unlink( os.path.join(logDir, file) )
+                os.unlink(os.path.join(logDir, file))
+
 
 def actuallyRunTheDaemon(options):
-    verbose     = options.verbose
-    chan        = Channel(BUFSIZE)
-    s           = None
+    verbose = options.verbose
+    chan = Channel(BUFSIZE)
+    s = None
     (cnx, addr) = (None, None)
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('', options.port))
@@ -50,9 +56,11 @@ def actuallyRunTheDaemon(options):
                 acceptMsg = "CONNECTION FROM %s" % str(addr)
                 if verbose:
                     print(acceptMsg)
-                print("BRANCH TO options.accessLog.log()")  ; sys.stdout.flush()
+                print("BRANCH TO options.accessLog.log()")
+                sys.stdout.flush()
                 options.accessLog.log(acceptMsg)
-                print("BACK FROM options.access.log()")  ; sys.stdout.flush()
+                print("BACK FROM options.access.log()")
+                sys.stdout.flush()
 
                 while 1:
                     chan.clear()
@@ -72,8 +80,8 @@ def actuallyRunTheDaemon(options):
                         print("    expectedSerial %s" % msg.expectedSerial)
                         print("    actualSerial   %s" % msg.actualSerial)
                         text = \
-                        "mismatch, domain %s: expected serial %s, got %s" % (
-                           msg.zoneName, msg.expectedSerial, msg.actualSerial)
+                            "mismatch, domain %s: expected serial %s, got %s" % (
+                                msg.zoneName, msg.expectedSerial, msg.actualSerial)
                         options.alertzLog.log(text)
 
                     elif msgNdx == 1:
@@ -81,7 +89,7 @@ def actuallyRunTheDaemon(options):
                         print("GOT CORRUPT LIST MSG")
                         print("    timestamp      %s" % msg.timestamp)
                         print("    seqNbr         %s" % msg.seqNbr)
-                        text = "corrupt list: %s" % ( msg.seqNbr)
+                        text = "corrupt list: %s" % (msg.seqNbr)
                         options.alertzLog.log(text)
 
                     elif msgNdx == 2:
@@ -91,7 +99,7 @@ def actuallyRunTheDaemon(options):
                         running = False
                         s.close()
                         # XXX STUB: log the message
-                        text = "shutdown: %s" % ( msg.remarks)
+                        text = "shutdown: %s" % (msg.remarks)
                         options.alertzLog.log(text)
 
                     cnx.close()
@@ -99,7 +107,8 @@ def actuallyRunTheDaemon(options):
 
             except KeyboardInterrupt as ke:
                 print("<keyboard interrupt received while connection open>")
-                if cnx: cnx.close()
+                if cnx:
+                    cnx.close()
                 running = False
 
     except KeyboardInterrupt as ke:
@@ -114,12 +123,13 @@ def actuallyRunTheDaemon(options):
         # COMMENTING THIS OUT PREVENTS SEGFAULT ON STOCKTON ---------
 #       if options.logMgr is not None:
 #           options.logMgr.close()
-#           options.logMgr = None 
+#           options.logMgr = None
         # END COMMENTING OUT ----------------------------------------
 
         if options.lockMgr is not None:
             options.lockMgr.unlock()
             options.lockMgr = None
+
 
 def runTheDaemon(options):
     """
@@ -145,23 +155,23 @@ def runTheDaemon(options):
         print('verbose          = ' + str(options.verbose))
 
     if not options.justShow:
-        lockMgr     = None
-        accessLog   = None
-        errorLog    = None
+        lockMgr = None
+        accessLog = None
+        errorLog = None
 
         # EXCEPTIONS IN THIS BLOCK ARE NOT CAUGHT
-        lockMgr             = serverutil.LockMgr('alertzd')
-        options.lockMgr     = lockMgr
-        logMgr              = serverutil.LogMgr(options.logDir)
-        options.logMgr      = logMgr
+        lockMgr = serverutil.LockMgr('alertzd')
+        options.lockMgr = lockMgr
+        logMgr = serverutil.LogMgr(options.logDir)
+        options.logMgr = logMgr
 
-        accessLog           = logMgr.open('access')
-        options.accessLog   = accessLog
+        accessLog = logMgr.open('access')
+        options.accessLog = accessLog
 
-        alertzLog           = logMgr.open('alertz')
-        options.alertzLog   = alertzLog
+        alertzLog = logMgr.open('alertz')
+        options.alertzLog = alertzLog
 
-        errorLog            = logMgr.open('error')
-        options.errorLog    = errorLog
+        errorLog = logMgr.open('error')
+        options.errorLog = errorLog
 
         actuallyRunTheDaemon(options)

@@ -3,7 +3,7 @@
 ALERTZ_PROTO_SPEC = """protocol org.xlattice.alertz
 
 # ===================================================================
-# ONLY ADD NEW MESSAGE TYPES TO THIS SECTION BY APPENDING THEM! 
+# ONLY ADD NEW MESSAGE TYPES TO THIS SECTION BY APPENDING THEM!
 # The order of declaration of these types is meaningful.
 # ===================================================================
 
@@ -27,9 +27,9 @@ message shutdown:
  remarks        lString     # goodbye message, null should be OK
 
 # ===================================================================
-# DO NOT USE MESSAGE TYPES BELOW THIS LINE 
+# DO NOT USE MESSAGE TYPES BELOW THIS LINE
 # These message types are not yet being used; until they are moved
-# into the section above, can edit and move types and insert new types 
+# into the section above, can edit and move types and insert new types
 # freely.
 # ===================================================================
 
@@ -82,27 +82,27 @@ message hostUnreachable:
  ipv4Addr       lString
 
 # mail servers --------------------------------------------
-message mailServerNotUp: 
+message mailServerNotUp:
  timestamp      fuInt32
  seqNbr         vuInt32
  ipv4Addr       lString
  port           vuInt32
 
 # name servers --------------------------------------------
-message nameServerNotUp: 
+message nameServerNotUp:
  timestamp      fuInt32
  seqNbr         vuInt32
  ipv4Addr       lString
  port           vuInt32
 
 # web servers ---------------------------------------------
-message webServerNotUp: 
+message webServerNotUp:
  timestamp      fuInt32
  seqNbr         vuInt32
  ipv4Addr       lString
  port           vuInt32
 
-message webPageBadHash: 
+message webPageBadHash:
  timestamp      fuInt32
  seqNbr         vuInt32
  url            lString
@@ -112,7 +112,7 @@ message webPageBadHash:
 # hacker activity reports ---------------------------------
 # Presumably sent because of frequent hits from the addr; if activity
 # is DOS, then these messages might exacerbate the problem.
-message badGuy: 
+message badGuy:
  timestamp      fuInt32
  seqNbr         vuInt32
  fromAddr       lString
