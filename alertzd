@@ -2,16 +2,19 @@
 
 # ~/dev/py/alertz/alertzd
 
-import os, sys, time
-from argparse   import ArgumentParser
+import os
+import sys
+import time
+from argparse import ArgumentParser
 
 import serverutil
 from alertz import *
- 
+
+
 def main():
 
-    pgmNameAndVersion   = "alertz v%s %s" % ( __version__, __version_date__)
-    timestamp           = "%04d%02d%02d-%02d%02d%02d" % time.gmtime()[:6]
+    pgmNameAndVersion = "alertz v%s %s" % (__version__, __version_date__)
+    timestamp = "%04d%02d%02d-%02d%02d%02d" % time.gmtime()[:6]
 
     # -- program defaults -------------------------------------------
 
@@ -20,39 +23,39 @@ def main():
     # DEBUG
     print "thisHost is '%s'" % thisHost
     # END
-    
+
     # -- check for config file --------------------------------------
 
     # -- parse the command line -------------------------------------
-    # see docs.python.org/library/argparse.html 
+    # see docs.python.org/library/argparse.html
     parser = ArgumentParser()
-    
-    parser.add_argument('-e', '--ec2Host',      action='store_true', 
-            help='set if machine is in EC2')
+
+    parser.add_argument('-e', '--ec2Host', action='store_true',
+                        help='set if machine is in EC2')
 
     parser.add_argument('-j', '--justShow', action='store_true',
-            help='show args and exit')
+                        help='show args and exit')
     parser.add_argument('-p', '--port', type=int, default=ALERTZ_PORT,
-            help='port to listen on')
+                        help='port to listen on')
     parser.add_argument('-t', '--showTimestamp', action='store_true',
-            help='show run timestamp')
+                        help='show run timestamp')
 
     parser.add_argument('-T', '--testing', action='store_true',
-            help='test run - write to ./testU')
+                        help='test run - write to ./testU')
 
     parser.add_argument('-V', '--showVersion', action='store_true',
-            help='show version number and date')
+                        help='show version number and date')
 
     parser.add_argument('-v', '--verbose', action='store_true',
-            help='talk a lot')
+                        help='talk a lot')
 
     args = parser.parse_args()      # a Namespace object
         if name == '__dir__':
             return tuple(self)
 
     # -- fixups -----------------------------------------------------
-    args.pgmNameAndVersion  = pgmNameAndVersion
-    args.timestamp          = timestamp
+    args.pgmNameAndVersion = pgmNameAndVersion
+    args.timestamp = timestamp
 
     # -- sanity checks ----------------------------------------------
     if args.port <= 0 or 65536 <= args.port:
@@ -63,11 +66,11 @@ def main():
     logDir = 'logs'
     if not os.path.exists(logDir):
         os.mkdir(logDir)
-    args.logDir =logDir
+    args.logDir = logDir
 
     # fixups --------------------------------------------------------
-    args.pgmNameAndVersion  = pgmNameAndVersion
-    args.thisHost           = thisHost
+    args.pgmNameAndVersion = pgmNameAndVersion
+    args.thisHost = thisHost
 
     # -- do it ------------------------------------------------------
     runTheDaemon(args)

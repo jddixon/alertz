@@ -1,30 +1,34 @@
 #!/usr/bin/python3
 
 # testWithDummyClient.py
-import os, threading, time
+import os
+import threading
+import time
 import unittest
-from io                 import StringIO
+from io import StringIO
 
-import fieldz.fieldTypes    as F
-import fieldz.msgSpec       as M
-import fieldz.typed         as T
+import fieldz.fieldTypes as F
+import fieldz.msgSpec as M
+import fieldz.typed as T
 
-from rnglib             import SimpleRNG
-from alertz             import *
-from alertz.chanIO      import *
-from alertz.daemon      import runTheDaemon, clearLogs
-from alertzProtoSpec    import ALERTZ_PROTO_SPEC
-from fieldz.parser      import StringProtoSpecParser
-from fieldz.chan        import Channel
-from fieldz.msgImpl     import makeMsgClass, makeFieldClass
+from rnglib import SimpleRNG
+from alertz import *
+from alertz.chanIO import *
+from alertz.daemon import runTheDaemon, clearLogs
+from alertzProtoSpec import ALERTZ_PROTO_SPEC
+from fieldz.parser import StringProtoSpecParser
+from fieldz.chan import Channel
+from fieldz.msgImpl import makeMsgClass, makeFieldClass
 
-rng         = SimpleRNG (time.time())
-nextSeqNbr  = 0                         # increment after each use
+rng = SimpleRNG(time.time())
+nextSeqNbr = 0                         # increment after each use
+
 
 class TestWithDummyClient (unittest.TestCase):
 
     def setUp(self):
         pass
+
     def tearDown(self):
         pass
 
@@ -47,15 +51,15 @@ class TestWithDummyClient (unittest.TestCase):
         """ returns a list """
         global nextSeqNbr
 
-        timestamp       = int(time.time())
-        seqNbr          = nextSeqNbr
-        nextSeqNbr     += 1     # used, so increment it
+        timestamp = int(time.time())
+        seqNbr = nextSeqNbr
+        nextSeqNbr += 1     # used, so increment it
 
-        zoneName        = rng.nextFileName(8)
-        expectedSerial  = rng.nextInt32()
-        actualSerial    = rng.nextInt32()
+        zoneName = rng.nextFileName(8)
+        expectedSerial = rng.nextInt32()
+        actualSerial = rng.nextInt32()
         while actualSerial == expectedSerial:
-            actualSerial    = rng.nextInt32()
+            actualSerial = rng.nextInt32()
 
         # NOTE that this is a list
         return [timestamp, seqNbr, zoneName, expectedSerial, actualSerial]
@@ -63,29 +67,29 @@ class TestWithDummyClient (unittest.TestCase):
     def nextZoneMismatchMsg(self):
         values = self.zoneMismatchFields()
         return ZoneMismatchMsg(values)
-    
+
     # -----------------------------------------------------
     def corruptListFields(self):
         global nextSeqNbr
-        timestamp       = int(time.time())
-        seqNbr          = nextSeqNbr
-        nextSeqNbr     += 1     # used, so increment it
-        remarks         = rng.nextFileName(16)
+        timestamp = int(time.time())
+        seqNbr = nextSeqNbr
+        nextSeqNbr += 1     # used, so increment it
+        remarks = rng.nextFileName(16)
         return [timestamp, seqNbr, remarks]
-    
+
     def nextCorruptListMsg(self):
         values = self.corruptListFields()
         return CorruptListMsg(values)           # GEEP
 
     # -----------------------------------------------------
     def shutdownFields(self):
-#       global nextSeqNbr
-#       timestamp       = int(time.time())
-#       seqNbr          = nextSeqNbr
-#       nextSeqNbr     += 1     # used, so increment it
-        remarks         = rng.nextFileName(16)
-        return [remarks,]
-    
+        #       global nextSeqNbr
+        #       timestamp       = int(time.time())
+        #       seqNbr          = nextSeqNbr
+        #       nextSeqNbr     += 1     # used, so increment it
+        remarks = rng.nextFileName(16)
+        return [remarks, ]
+
     def nextShutdownMsg(self):
         values = self.shutdownFields()
         return ShutdownMsg(values)              # GEEP
@@ -102,24 +106,24 @@ class TestWithDummyClient (unittest.TestCase):
         # END
 
         # set up options ----------------------------------
-        now                 = int (time.time())
-        pgmNameAndVersion   = "testWithDummyClient v%s %s" % ( 
-                                        __version__, __version_date__)
+        now = int(time.time())
+        pgmNameAndVersion = "testWithDummyClient v%s %s" % (
+            __version__, __version_date__)
         with open('/etc/hostname', 'r') as f:
             thisHost = f.read().strip()
 
         options = {}                           # a namespace, so to speak
-        options['ec2Host']         = False
-        options['justShow']        = False
-        options['logDir']          = 'logs'
-        options['pgmNameAndVersion']         = pgmNameAndVersion
-        options['port']            = 55555
-        options['showTimestamp']   = False
-        options['showVersion']     = False
-        options['testing']         = True
-        options['thisHost']        = thisHost
-        options['timestamp']       = now
-        options['verbose']         = False
+        options['ec2Host'] = False
+        options['justShow'] = False
+        options['logDir'] = 'logs'
+        options['pgmNameAndVersion'] = pgmNameAndVersion
+        options['port'] = 55555
+        options['showTimestamp'] = False
+        options['showVersion'] = False
+        options['testing'] = True
+        options['thisHost'] = thisHost
+        options['timestamp'] = now
+        options['verbose'] = False
         ns = Namespace(options)
 
         # clear the log files (so delete any files under logs/) -----
@@ -131,13 +135,13 @@ class TestWithDummyClient (unittest.TestCase):
 
         # give the daemon time to wake up  --------------------------
         time.sleep(0.15)    # XXX without this we get an abort saying
-                            # that libev cannot allocate (2G - 16)B
+        # that libev cannot allocate (2G - 16)B
 
         # start sending (some fixed number of ) messages ------------
         msgsSent = []
         for n in range(MSG_COUNT):
-            msg         = self.nextZoneMismatchMsg()
-            seqNbrField = msg[1]            
+            msg = self.nextZoneMismatchMsg()
+            seqNbrField = msg[1]
             # XXX by name would be better!
             self.assertEquals(n, seqNbrField.value)
 
@@ -147,7 +151,7 @@ class TestWithDummyClient (unittest.TestCase):
             chan.flip()
 
             # send the msg to the daemon ------------------
-            skt = sendToEndPoint( chan, '127.0.0.1', 55555)
+            skt = sendToEndPoint(chan, '127.0.0.1', 55555)
             time.sleep(0.05)
             skt.close()
             msgsSent.append(msg)
@@ -162,12 +166,12 @@ class TestWithDummyClient (unittest.TestCase):
         time.sleep(0.05)
 
         # build and send shutdown msg -------------------------------
-        msg         = self.nextShutdownMsg()
+        msg = self.nextShutdownMsg()
         chan.clear()
         msg.writeStandAlone(chan)
         chan.flip()
 
-        skt = sendToEndPoint( chan, '127.0.0.1', 55555)
+        skt = sendToEndPoint(chan, '127.0.0.1', 55555)
         # DEBUG
         print("SHUTDOWN MSG HAS BEEN SENT")
         # END
