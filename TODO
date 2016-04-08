@@ -1,5 +1,9 @@
 ~/dev/py/alertz/TODO
 
+2016-03-18
+    * three errors in testAlertzSerialization are all "_name 
+        in __slots__" errors
+
 2016-02-19
     * surely fieldz.chan should be name fieldz.channel ...
 

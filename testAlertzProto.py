@@ -40,7 +40,7 @@ class TestAlertzProto (unittest.TestCase):
         protoReg = R.ProtoReg(protoName, nodeReg)
         msgReg = R.MsgReg(protoReg)
         protoSpec = M.ProtoSpec(protoName, protoReg)
-        self.assertEquals(protoName, protoSpec.name)
+        self.assertEqual(protoName, protoSpec.name)
 
         msgName = 'zoneMismatch'
 
@@ -57,7 +57,7 @@ class TestAlertzProto (unittest.TestCase):
             M.FieldSpec(msgReg, 'actualSerial', F._V_UINT32, M.Q_REQUIRED, 4),
         ]
         msgSpec = M.MsgSpec(msgName, protoSpec, msgReg)
-        self.assertEquals(msgName, msgSpec.name)
+        self.assertEqual(msgName, msgSpec.name)
         for f in fields:
             msgSpec.addField(f)
 
@@ -104,23 +104,23 @@ class TestAlertzProto (unittest.TestCase):
         sOM = p.parse()             # object model from string serialization
         self.assertIsNotNone(sOM)
         self.assertTrue(isinstance(sOM, M.ProtoSpec))
-        self.assertEquals('org.xlattice.alertz', sOM.name)
-        self.assertEquals(0, len(sOM.enums))
-        self.assertEquals(16, len(sOM.msgs))
-        self.assertEquals(0, len(sOM.seqs))
+        self.assertEqual('org.xlattice.alertz', sOM.name)
+        self.assertEqual(0, len(sOM.enums))
+        self.assertEqual(16, len(sOM.msgs))
+        self.assertEqual(0, len(sOM.seqs))
 
         msgSpec = sOM.msgs[0]
-        self.assertEquals(msgSpec.fName(0), 'timestamp')
-        self.assertEquals(msgSpec.fTypeName(0), 'fuInt32')
-        self.assertEquals(msgSpec.fName(1), 'seqNbr')
-        self.assertEquals(msgSpec.fTypeName(1), 'vuInt32')
+        self.assertEqual(msgSpec.fName(0), 'timestamp')
+        self.assertEqual(msgSpec.fTypeName(0), 'fuInt32')
+        self.assertEqual(msgSpec.fName(1), 'seqNbr')
+        self.assertEqual(msgSpec.fTypeName(1), 'vuInt32')
 
-        self.assertEquals(msgSpec.fName(2), 'zoneName')
-        self.assertEquals(msgSpec.fTypeName(2), 'lString')
-        self.assertEquals(msgSpec.fName(3), 'expectedSerial')
-        self.assertEquals(msgSpec.fTypeName(3), 'vuInt32')
-        self.assertEquals(msgSpec.fName(4), 'actualSerial')
-        self.assertEquals(msgSpec.fTypeName(4), 'vuInt32')
+        self.assertEqual(msgSpec.fName(2), 'zoneName')
+        self.assertEqual(msgSpec.fTypeName(2), 'lString')
+        self.assertEqual(msgSpec.fName(3), 'expectedSerial')
+        self.assertEqual(msgSpec.fTypeName(3), 'vuInt32')
+        self.assertEqual(msgSpec.fName(4), 'actualSerial')
+        self.assertEqual(msgSpec.fTypeName(4), 'vuInt32')
 
 if __name__ == '__main__':
     unittest.main()
