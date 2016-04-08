@@ -1,5 +1,10 @@
 ~/dev/py/alertz/CHANGES
 
+
+v0.2.3
+    2016-04-08
+        * introduced .langMap                                       SLOC  886
+        * fixed countem; general cleanup                            SLOC  893
 v0.2.2
     2016-03-17
         * add auto8it and execute                                   SLOC  888
@@ -44,6 +49,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

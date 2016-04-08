@@ -1,8 +1,7 @@
+#!/bin/bash
+
 cd ~/dev/py/alertz
+
 rm -rf build/*
 
-pySloc -v  $@ \
-    bash:countem bash:installit bash:test.all   \
-    text:.gitignore text:MANIFEST.in                            \
-    py:alertzd
-
+pySloc -v  $@ 

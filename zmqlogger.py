@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+
+# ~/dev/py/alertz/zmqlogger.py
+
 """
 Hacked from pyzmq/examples/zmglogger.py:
 
@@ -55,6 +59,7 @@ def log_worker(port, interval=1, level=logging.DEBUG):
 
     while True:
         level = random.choice(LOG_LEVELS)
+
         logger.log(level, "Hello from %i!" % os.getpid())
         time.sleep(interval)
 
