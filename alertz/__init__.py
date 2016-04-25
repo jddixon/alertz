@@ -1,7 +1,7 @@
 # ~/dev/py/alertz/alertz/__init__.py
 
-__version__      = '0.2.3'
-__version_date__ = '2016-04-08'
+__version__      = '0.2.4'
+__version_date__ = '2016-04-24'
 
 __all__ = ['__version__', '__version_date__',
            'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
