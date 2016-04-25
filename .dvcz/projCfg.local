@@ -1,0 +1,15 @@
+# ~/dev/py/alertz/.langMap
+
+dir:pkg:alertz
+code:std:.dvcz/projCfg.local
+ 
+bash:std:countem
+bash:std:installit
+bash:std:test.all
+txt:std:.gitignore
+
+txt:std:MANIFEST.in
+
+# main executable
+py:global:alertzd
+
