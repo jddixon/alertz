@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-cd ~/dev/py/alertz
+cd $DEV_BASE/py/alertz
 
-rm -rf build/*
+rm -rf build/* 
 
-pySloc -v  $@ 
+pySloc  -X dist -v $@
