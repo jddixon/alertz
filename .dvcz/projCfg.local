@@ -1,6 +1,7 @@
-# ~/dev/py/alertz/.langMap
+# ~/dev/py/alertz/.dvcz/projCfg.local
 
 dir:pkg:alertz
+code:std:.dvcz/projCfg
 code:std:.dvcz/projCfg.local
  
 bash:std:countem

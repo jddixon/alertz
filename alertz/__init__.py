@@ -1,7 +1,7 @@
 # ~/dev/py/alertz/alertz/__init__.py
 
-__version__      = '0.2.4'
-__version_date__ = '2016-04-24'
+__version__ = '0.2.5'
+__version_date__ = '2016-05-17'
 
 __all__ = ['__version__', '__version_date__',
            'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
@@ -59,4 +59,3 @@ class Namespace(dict):
 
     def __setattr__(self, name, value):
         self[name] = value
-

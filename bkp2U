@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+cd $DEV_BASE/py/alertz
+
+rm -rf build/*
+
+blListGen                                 \
+            -d ../alertz                    \
+            -1L                             \
+            -u /var/app/sharedev/U          \
+            $@
