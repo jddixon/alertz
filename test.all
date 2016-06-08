@@ -1,6 +1,14 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-./testAlertzProto.py
-./testAlertzSerialization.py
-./testNamespace.py
-./testWithDummyClient.py
+if [ ! -z "${DEV_BASE// }" ]
+then
+  cd $DEV_BASE/py/alertz
+  
+  ./testAlertzProto.py
+  ./testAlertzSerialization.py
+  ./testNamespace.py
+  ./testWithDummyClient.py
+  
+else
+  echo "DEV_BASE is not defined"
+fi

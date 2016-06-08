@@ -1,5 +1,0 @@
-#!/bin/bash
-
-cd /home/jdd/dev/py/alertz
-
-autopep8 -air alertz alertzd alertzProtoSpec.py setup.py test*.py zmqlogger.py 
