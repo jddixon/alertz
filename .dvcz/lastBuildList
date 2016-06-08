@@ -7,16 +7,18 @@ zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
 H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
 GQIDAQAB
 -----END RSA PUBLIC KEY-----
-alertz v0.2.4
-2016-05-18 00:22:28
+alertz v0.2.5.1
+2016-06-08 18:51:18
 # START CONTENT #
 alertz
  .dvcz
-  projCfg 81372faf15abd93402710b0095560551b38f741b
-  projCfg.local 083c792ad8beda17172e8703ce78775bbf6e8aea
-  version 40f997d5654c7286777fc8f237f6864b1d16425f
+  builds aed6c22a1dd087c97f6577a014d556de2da9f156
+  lastBuildList b2e3bd3edced86be712acdbc063a36870daf0ef7
+  projCfg a07aaa572ff233c6bca07a5bc76dc78e4ca6d443
+  projCfg.local d63787ccfdcaa65882079a5513ff7e0bc40b6f3e
+  version 4951b0ab06bc205993105aa0d03889b339871583
  .gitignore 274228c81d7b75ce1888567cdfb763aacfcd74db
- CHANGES 494606436a09ac0c8806f13c32b9e15b9458c41f
+ CHANGES 1292dd9fbbe194c1bfc001f6ca2697879d97d875
  LICENSE.md 50a6fc1b15e967d1dc37ba7559cf121a66240830
  MANIFEST.in f05d8cfb36d154a3466fc3a1b32b6403c7ff7195
  README 426acfbb74103ee8c6eb05c7a0f0a83338ba7793
@@ -24,14 +26,13 @@ alertz
  README.md 92bc52628bc99dcf65aee4fcd1387148488e839f
  TODO 386c76be9f4c6f1003d0e42e93a3d9ee4a67dfee
  alertz
-  __init__.py 5fe1beaf208bc7e2fb8214761389da5bdedb34bf
+  __init__.py 647f47b0092956badf02138a9cb57d9b24c7019b
   chanIO.py 1b32407f8ebaf7533fc4466f08432770919d9669
   daemon.py 5019b0b33f2d472b377b6e1266186265ed7070ae
  alertzProtoSpec.py e16375d36693ba764e6eda01229b41096979dc9b
  alertzd affaed4979425015bb273ca511d6ad83bcdf7b7f
- auto8it 44f1f31771a641fce609d6cb79f223afca361b73
- bkp2U 30ef241ec68f5151b7baa36df60c65dfa7392a05
- countem 5f19e880e3fab381cb123b988c64c401190e79fe
+ bkp2U b8bc1ddda54bc6afc4e5b5747752d724d822cc21
+ countem f9f72d06cea483a7ae03db9116c8d27aeb82521a
  dist
   alertz-0.1.1.tar.gz dc6e7016934922fb3b0a41bf5528c374895a3d04
   alertz-0.1.2.tar.gz 0f8c6730b12c00ec613971592a338886839f71d4
@@ -42,20 +43,23 @@ alertz
   alertz-0.2.2.tar.gz 0a910793a627035733ffa160e4bef8744c47e050
   alertz-0.2.3.tar.gz a51d5aa4faa4173cfcd13ea34f406d24d13e0850
   alertz-0.2.4.tar.gz 9a41312a11bcecfc5c3eb6e01f9a239e46a2490c
+  alertz-0.2.5.1.tar.gz 15bc2dd8ef4100e73dc446a43e54c5de6d52d060
+  alertz-0.2.5.tar.gz 8067ea620eaef7060abd1756ad85b1b9e0140113
  ghpDoc
   index.md 6174615f88fc5b919cd3262028eb898fb55739e7
- installit 324aee714ff1483484808764c1b4955327f549d0
+ installit 6db03dd64181ccd8fa43f43c389c5c370d335acc
  logs
   access.log da39a3ee5e6b4b0d3255bfef95601890afd80709
   alertz.log da39a3ee5e6b4b0d3255bfef95601890afd80709
   error.log da39a3ee5e6b4b0d3255bfef95601890afd80709
  setup.py 76ca69feb7fa25e7b3c901beded8a29e6cbfc7c9
- test.all 67e8587548a16fbd5114d29d2d760a594fae0261
- testAlertzProto.py eff9b44e0083958be8e944431c20a35837bf9e63
- testAlertzSerialization.py 538386d29ed3af2b5fc6b2b0f3db3c28683161ea
- testNamespace.py d73457c58acb5cbea8c45e163ba82b64176ffb2d
- testWithDummyClient.py 66c2bac7d66bd4eae45be6601392e884b68f0b1e
+ styleit 9fb5707ba719b1dedbaef011ddce223a76228a83
+ test.all 3af15ce53a8c4685a3c735242e59bc3c216871b5
+ testAlertzProto.py 2c439762c33c0490488587ee63fb9609af37f43f
+ testAlertzSerialization.py a8c9c9d25dc3dd64119110cfb7844fe9b6ced329
+ testNamespace.py 94eaf29a0bce8052b08c260572ac649a60ae625b
+ testWithDummyClient.py aa7f04fcc1bddd94cf3486084d6fb6eda830545f
  zmqlogger.py 2ff202f1d64129ce61138f270e0c254c3cb4fc56
 # END CONTENT #
 
-bN0IRmI6BeGsbf2QuOkyksD7nZ0ijEFGXubDSHlSoKT5AiBwUswQioZIsFOurM66B9k1TLtbciLe5AlnVUhEAWkkPpKyeNZCWXTNF/uxYkGpPOn72NowTL3WIfy2PiSOSyXPqH/oMem3955rlZK9wTKlH3zlB7Wq7AI775DmfuPvIe7sQHiyWv8CA6b/Fi1VQi37SUCUPccr2HCYwrynJaiA5Vl6ybMofvYz9gi2q3xJoYuWRuW2pKAUWL/ocT6ZfyTOdn3xOkjExJK+vUoKWjj3mz/yqjl1gEkGJpcSZBlGq29QGWmScxETZ0g5OeOwf4zt5atRnKA5War5hsa+hA==
+IfVNeAfb3LzSGLOBQhX+GzLwat7SETdeYELFRoeP/y++hDner18ykVBjTF1jFdys7I3m4+sCOD085k0G7M7VbcfCA61VOem6lhtBSqz6EUlcGmwNjSH0gSRjg4mC4FX2qUtl1V45mtglaqTo8xJFHkElzFsxOgKY15BNOcc0nHnjLTQXIxvS7psfRKn6mzEAGMa151J3MzDqJLAjs2jyRLkeqQpY4cNr5FLi8PSGYg0zxFne1jHRMRGoyof0hyRkohBO4n4Z8tNhEFcZ8VeKXu0r10FCl/SvoMTI/nCaEYA1Ln37QIMBpm4LAkB6NqeR4z3/siy9CMU9ypN4acX8Aw==

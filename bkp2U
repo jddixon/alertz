@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
-cd $DEV_BASE/py/alertz
-
-rm -rf build/*
-
-blListGen                                 \
-            -d ../alertz                    \
-            -1L                             \
-            -u /var/app/sharedev/U          \
-            $@
+if [ ! -z "${DEV_BASE// }" ]
+then
+  cd $DEV_BASE/py/alertz
+  
+  blListGen \
+    -d ../alertz \
+    -1L  \
+    -u $DVCZ_UDIR \
+    -X logs \
+    -X .ssh \
+    $@
+  
+else
+  echo "DEV_BASE is not defined"
+fi
