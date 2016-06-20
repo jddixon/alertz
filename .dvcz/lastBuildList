@@ -7,18 +7,18 @@ zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
 H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
 GQIDAQAB
 -----END RSA PUBLIC KEY-----
-alertz v0.2.5.1
-2016-06-08 18:51:18
+alertz v0.2.6
+2016-06-20 19:57:24
 # START CONTENT #
 alertz
  .dvcz
-  builds aed6c22a1dd087c97f6577a014d556de2da9f156
-  lastBuildList b2e3bd3edced86be712acdbc063a36870daf0ef7
-  projCfg a07aaa572ff233c6bca07a5bc76dc78e4ca6d443
-  projCfg.local d63787ccfdcaa65882079a5513ff7e0bc40b6f3e
-  version 4951b0ab06bc205993105aa0d03889b339871583
- .gitignore 274228c81d7b75ce1888567cdfb763aacfcd74db
- CHANGES 1292dd9fbbe194c1bfc001f6ca2697879d97d875
+  builds 03a870ddcad210c330bc8ed6f6bdfb686732eb63
+  lastBuildList fbe0a313667d40d16f41b7339f61a2d618ddb01a
+  projCfg 325af1fffadfdf23512b7057850ea1a19b02971a
+  projCfg.local c4e3feb346df20d6992fb79b0ea78b565f9b4b09
+  version c824181118b6f156ce28fdacf559fceb94c89e41
+ .gitignore 5f1a04317952b671c5828218c6efe88c2594f8fb
+ CHANGES b3cf43ded2488a4720f5201cee35b4c38ec9153f
  LICENSE.md 50a6fc1b15e967d1dc37ba7559cf121a66240830
  MANIFEST.in f05d8cfb36d154a3466fc3a1b32b6403c7ff7195
  README 426acfbb74103ee8c6eb05c7a0f0a83338ba7793
@@ -26,13 +26,13 @@ alertz
  README.md 92bc52628bc99dcf65aee4fcd1387148488e839f
  TODO 386c76be9f4c6f1003d0e42e93a3d9ee4a67dfee
  alertz
-  __init__.py 647f47b0092956badf02138a9cb57d9b24c7019b
+  __init__.py 8b90a914c59b04bd0af57753b119928404f96635
   chanIO.py 1b32407f8ebaf7533fc4466f08432770919d9669
   daemon.py 5019b0b33f2d472b377b6e1266186265ed7070ae
  alertzProtoSpec.py e16375d36693ba764e6eda01229b41096979dc9b
  alertzd affaed4979425015bb273ca511d6ad83bcdf7b7f
- bkp2U b8bc1ddda54bc6afc4e5b5747752d724d822cc21
- countem f9f72d06cea483a7ae03db9116c8d27aeb82521a
+ bkp2U 730dd1938408fbd948c051d6400f2bca0cc811bc
+ countem 4b78a365ae58b33910f0629cd2251e3a58356da1
  dist
   alertz-0.1.1.tar.gz dc6e7016934922fb3b0a41bf5528c374895a3d04
   alertz-0.1.2.tar.gz 0f8c6730b12c00ec613971592a338886839f71d4
@@ -45,15 +45,25 @@ alertz
   alertz-0.2.4.tar.gz 9a41312a11bcecfc5c3eb6e01f9a239e46a2490c
   alertz-0.2.5.1.tar.gz 15bc2dd8ef4100e73dc446a43e54c5de6d52d060
   alertz-0.2.5.tar.gz 8067ea620eaef7060abd1756ad85b1b9e0140113
+  alertz-0.2.6.tar.gz 418f8875d90d17a7351775cb5fd9570fa8524f8f
  ghpDoc
+  css
+   LICENSE.html5-boilerplate.md ded771b3245b190da0e81c76de5a80d41392c0a6
+   ghp.css 1d6ebe8a6cf8f61f4645a793cb087dfae2420f33
+   main.css 018ed80b8a6e6607bc7c08595fa5a7fa56853885
+   normalize.css cba40c7ce3d558d00ff79d7505ac3d348015ec9c
+  img
+   GitHub-Mark-32px.png fabe53eb72f9b6d3d47cd95aff31ffc45c2fdbf8
+   chunk.jpg de2b27e41f1547fc14b13399f5906b4303b49657
+   chunk2.jpg d0593d312dbb8ea837c17b28cb639726e29ea93b
+   cluster-with-clients.jpg c167d04c0c6b5736ef9fe4cdc3fcce1956fdea78
+   simple-cluster.jpg 6b223ddd25937c1ef75ef328f36fc3436f10bd62
+   xl-registration.jpg 15cbf951f9db173a45428b32dcec87aca83bbdf0
+   xlattice-2014.jpg f185aaad06db71acd9454f31054c62c56d36f37f
   index.md 6174615f88fc5b919cd3262028eb898fb55739e7
  installit 6db03dd64181ccd8fa43f43c389c5c370d335acc
- logs
-  access.log da39a3ee5e6b4b0d3255bfef95601890afd80709
-  alertz.log da39a3ee5e6b4b0d3255bfef95601890afd80709
-  error.log da39a3ee5e6b4b0d3255bfef95601890afd80709
  setup.py 76ca69feb7fa25e7b3c901beded8a29e6cbfc7c9
- styleit 9fb5707ba719b1dedbaef011ddce223a76228a83
+ styleit f71fe0f2364d14a83c8af7d279893ebc867bf562
  test.all 3af15ce53a8c4685a3c735242e59bc3c216871b5
  testAlertzProto.py 2c439762c33c0490488587ee63fb9609af37f43f
  testAlertzSerialization.py a8c9c9d25dc3dd64119110cfb7844fe9b6ced329
@@ -62,4 +72,4 @@ alertz
  zmqlogger.py 2ff202f1d64129ce61138f270e0c254c3cb4fc56
 # END CONTENT #
 
-IfVNeAfb3LzSGLOBQhX+GzLwat7SETdeYELFRoeP/y++hDner18ykVBjTF1jFdys7I3m4+sCOD085k0G7M7VbcfCA61VOem6lhtBSqz6EUlcGmwNjSH0gSRjg4mC4FX2qUtl1V45mtglaqTo8xJFHkElzFsxOgKY15BNOcc0nHnjLTQXIxvS7psfRKn6mzEAGMa151J3MzDqJLAjs2jyRLkeqQpY4cNr5FLi8PSGYg0zxFne1jHRMRGoyof0hyRkohBO4n4Z8tNhEFcZ8VeKXu0r10FCl/SvoMTI/nCaEYA1Ln37QIMBpm4LAkB6NqeR4z3/siy9CMU9ypN4acX8Aw==
+W/OmxXGBIIPEf+53OC9/PRlEdkT7f7Ej2KKHpNJd8iZufksgtiiiSosEhEzBn4jJrbJ8ml1h8VcxzoMuO4uA7vzEkubI+h4UhgsdEimId+5alOtW6dOxbELTqoykRyv6XwLXn4FuGc1IDppkx0DyM5/JDen5pbkzxfIkrNYYqh/WNpSwjzg5wvJqKVX9SNA+agKtGP8N05B4TSoxuxXcLE5RBDRWLekt7qn6pyuQZx6jlDe0v0S1E982ZUvKYRzfYuhDZMywGkQF5QkjQrszq5jqEBQ8EhDYkwXqxifDJBHDJoflwC1QPVftRJL6Orq0o6UpUSH4iVkgmYtKVy30bw==
