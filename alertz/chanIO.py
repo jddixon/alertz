@@ -2,7 +2,6 @@
 
 import socket
 import sys
-#import serverutil
 #from io                 import StringIO
 #
 from fieldz.raw import LEN_PLUS_TYPE, readFieldHdr, readRawVarint
