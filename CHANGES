@@ -1,5 +1,8 @@
 ~/dev/py/alertz/CHANGES
 
+v0.2.7
+    2016-07-26
+        * correct logMgr, lockMgr code                              SLOC 1516
 v0.2.6
     2016-06-20
         * add ghpDoc/{css,img}                                      SLOC 1495
@@ -60,6 +63,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

@@ -23,5 +23,9 @@ setup(name='alertz',
       #
       # following could be in scripts/ subdir; SQuote
       scripts=['alertzd', ],
-      # MISSING url
+      # MISSING description
+      classifiers=[
+          'License :: OSI Approved :: MIT License',
+          'Programming Language :: Python :: 3',
+      ],
       )

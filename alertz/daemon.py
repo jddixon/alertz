@@ -7,7 +7,8 @@ import os
 import socket
 import sys
 import time
-import serverutil
+from xlattice.ftLog import LogMgr
+from xlattice.procLock import ProcLock
 from io import StringIO
 
 import fieldz.fieldTypes as F
@@ -159,19 +160,24 @@ def runTheDaemon(options):
         accessLog = None
         errorLog = None
 
-        # EXCEPTIONS IN THIS BLOCK ARE NOT CAUGHT
-        lockMgr = serverutil.LockMgr('alertzd')
-        options.lockMgr = lockMgr
-        logMgr = serverutil.LogMgr(options.logDir)
-        options.logMgr = logMgr
+        try:
+            lockMgr = ProcLock('alertzd')
+            options.lockMgr = lockMgr
+            logMgr = LogMgr(options.logDir)
+            options.logMgr = logMgr
 
-        accessLog = logMgr.open('access')
-        options.accessLog = accessLog
+            accessLog = logMgr.open('access')
+            options.accessLog = accessLog
 
-        alertzLog = logMgr.open('alertz')
-        options.alertzLog = alertzLog
+            alertzLog = logMgr.open('alertz')
+            options.alertzLog = alertzLog
 
-        errorLog = logMgr.open('error')
-        options.errorLog = errorLog
+            errorLog = logMgr.open('error')
+            options.errorLog = errorLog
 
-        actuallyRunTheDaemon(options)
+            actuallyRunTheDaemon(options)
+        except:
+            print_exc()
+            sys.exit(1)
+        finally:
+            lockMgr.unlock()

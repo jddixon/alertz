@@ -7,30 +7,30 @@ zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
 H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
 GQIDAQAB
 -----END RSA PUBLIC KEY-----
-alertz v0.2.6
-2016-06-20 19:57:24
+alertz v0.2.7
+2016-07-26 20:14:11
 # START CONTENT #
 alertz
  .dvcz
-  builds 03a870ddcad210c330bc8ed6f6bdfb686732eb63
-  lastBuildList fbe0a313667d40d16f41b7339f61a2d618ddb01a
+  builds 5137533ea94204af5dff7ba54bcf105a0d2abb19
+  lastBuildList 54faa317cee67932adbab8dd3fe528c5d7a329e9
   projCfg 325af1fffadfdf23512b7057850ea1a19b02971a
   projCfg.local c4e3feb346df20d6992fb79b0ea78b565f9b4b09
-  version c824181118b6f156ce28fdacf559fceb94c89e41
+  version 23a43d86a63142d8fb99b9eb8ebb1642d449afa0
  .gitignore 5f1a04317952b671c5828218c6efe88c2594f8fb
- CHANGES b3cf43ded2488a4720f5201cee35b4c38ec9153f
+ CHANGES e019eb07d8d3c9b04d2ae86045200d87c5136776
  LICENSE.md 50a6fc1b15e967d1dc37ba7559cf121a66240830
  MANIFEST.in f05d8cfb36d154a3466fc3a1b32b6403c7ff7195
  README 426acfbb74103ee8c6eb05c7a0f0a83338ba7793
  README.alertzd 3e67db95b08abaa93dbcd1cc3f17ed536e33283c
  README.md 92bc52628bc99dcf65aee4fcd1387148488e839f
- TODO 386c76be9f4c6f1003d0e42e93a3d9ee4a67dfee
+ TODO b815990cc2375a3faa7216d88bc788b37b227c24
  alertz
-  __init__.py 8b90a914c59b04bd0af57753b119928404f96635
-  chanIO.py 1b32407f8ebaf7533fc4466f08432770919d9669
-  daemon.py 5019b0b33f2d472b377b6e1266186265ed7070ae
+  __init__.py e683b16ec579b7158dc4933c65ad83473da90b3c
+  chanIO.py 16cc34b6143791a9aa165159682c299417b696fc
+  daemon.py fa0d9a36c30c4ed9875ec4c93592549e3a9a23d4
  alertzProtoSpec.py e16375d36693ba764e6eda01229b41096979dc9b
- alertzd affaed4979425015bb273ca511d6ad83bcdf7b7f
+ alertzd 0f498b3c694160ced1b85b5f130f3940c42825dd
  bkp2U 730dd1938408fbd948c051d6400f2bca0cc811bc
  countem 4b78a365ae58b33910f0629cd2251e3a58356da1
  dist
@@ -46,6 +46,7 @@ alertz
   alertz-0.2.5.1.tar.gz 15bc2dd8ef4100e73dc446a43e54c5de6d52d060
   alertz-0.2.5.tar.gz 8067ea620eaef7060abd1756ad85b1b9e0140113
   alertz-0.2.6.tar.gz 418f8875d90d17a7351775cb5fd9570fa8524f8f
+  alertz-0.2.7.tar.gz 6ccb01d136e53fd85794a62e2165d97e18610f62
  ghpDoc
   css
    LICENSE.html5-boilerplate.md ded771b3245b190da0e81c76de5a80d41392c0a6
@@ -62,7 +63,7 @@ alertz
    xlattice-2014.jpg f185aaad06db71acd9454f31054c62c56d36f37f
   index.md 6174615f88fc5b919cd3262028eb898fb55739e7
  installit 6db03dd64181ccd8fa43f43c389c5c370d335acc
- setup.py 76ca69feb7fa25e7b3c901beded8a29e6cbfc7c9
+ setup.py 25a48c137e30092726874728d805ba82687bd055
  styleit f71fe0f2364d14a83c8af7d279893ebc867bf562
  test.all 3af15ce53a8c4685a3c735242e59bc3c216871b5
  testAlertzProto.py 2c439762c33c0490488587ee63fb9609af37f43f
@@ -72,4 +73,4 @@ alertz
  zmqlogger.py 2ff202f1d64129ce61138f270e0c254c3cb4fc56
 # END CONTENT #
 
-W/OmxXGBIIPEf+53OC9/PRlEdkT7f7Ej2KKHpNJd8iZufksgtiiiSosEhEzBn4jJrbJ8ml1h8VcxzoMuO4uA7vzEkubI+h4UhgsdEimId+5alOtW6dOxbELTqoykRyv6XwLXn4FuGc1IDppkx0DyM5/JDen5pbkzxfIkrNYYqh/WNpSwjzg5wvJqKVX9SNA+agKtGP8N05B4TSoxuxXcLE5RBDRWLekt7qn6pyuQZx6jlDe0v0S1E982ZUvKYRzfYuhDZMywGkQF5QkjQrszq5jqEBQ8EhDYkwXqxifDJBHDJoflwC1QPVftRJL6Orq0o6UpUSH4iVkgmYtKVy30bw==
+Zgn6Oxd8cu1A4bQB735g/g62P8S522JJpL/GjjMT+MtgULTvxk26UyUxkR+aa0Yat4EUzCGdUbjGsL5Xl5thwwzZSSLzfkMg7jw2WcTi+htVbSK3MnrtAhhWqopKIqXotR3E94XqvRRevusLmSWyruBI5VjQglro8tRJN0n/tFV6FP45i2lXQtGaPv4ed7ZoYuert1cSypShdPxpoGDyJP//mX5KcEeOuqiniPndUedkze2nNHXKAK1Vecf5bYXFrmoG0qPCOx8Azd8HEVS1a9vTZTzd4ozx8jy6Rv99faP95zeo5tFcaoBOH4zBj4s9h6CgjUrOM+MxjY+HvV3dvQ==
