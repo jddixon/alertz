@@ -17,7 +17,7 @@ message zoneMismatch:
  actualSerial   vuInt32
 
 # the zone list file itself is corrupt
-message corruptList:
+message corruptZoneList:
  # get the IP address of the reporting host from the connection
  timestamp      fuInt32
  seqNbr         vuInt32
@@ -44,7 +44,7 @@ message ok:
  remarks        lString     # null should be OK
 
 # CHECK_IP_ADDR MESSAGES from guadalupe -----------------------------
-message newGuadalupeGWAddr:
+message newGWAddr:
  timestamp      fuInt32
  seqNbr         vuInt32
  oldIPV4Addr    lString

@@ -7,6 +7,7 @@ dir:ign:logs
 code:std:.dvcz/projCfg
 code:std:.dvcz/projCfg.local
 code:std:.gitignore
+code:std:.gitignore.local
 code:std:MANIFEST.in
  
 bash:std:bkp2U

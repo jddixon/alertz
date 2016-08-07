@@ -13,6 +13,7 @@
 .xlattice
 CVS
 MANIFEST
+README.jdd
 THIS.IS.A.GIT*
 __pycache__
 build
