@@ -1,5 +1,8 @@
 ~/dev/py/alertz/TODO
 
+2016-08-07
+    * README.md should link to a page specifying message formats
+
 2016-07-26
     * all references to serverutil.LogMgr show instead refer to         * DONE
         xlattice.ftlog.LogMgr                                           * DONE

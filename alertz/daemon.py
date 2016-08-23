@@ -11,7 +11,7 @@ from xlattice.ftLog import LogMgr
 from xlattice.procLock import ProcLock
 from io import StringIO
 
-import fieldz.fieldTypes as F
+from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 import fieldz.msgSpec as M
 import fieldz.typed as T
 

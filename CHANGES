@@ -1,5 +1,8 @@
 ~/dev/py/alertz/CHANGES
 
+v0.2.9
+    2016-08-23
+        * fix copyright, license, setup.py                          SLOC 1551
 v0.2.8
     2016-08-07
         * extend README.md, some additional edits                   SLOC 1521
@@ -66,6 +69,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

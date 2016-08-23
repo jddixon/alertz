@@ -10,7 +10,7 @@ from io import StringIO
 from fieldz import parser
 
 from fieldz.parser import StringProtoSpecParser
-import fieldz.fieldTypes as F
+from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 import fieldz.msgSpec as M
 import fieldz.typed as T
 import fieldz.reg as R
@@ -61,7 +61,9 @@ class TestAlertzProto (unittest.TestCase):
         for f in fields:
             msgSpec.addField(f)
 
-        # protoSpec.addMsg(msgSpec)     # ALREADY DONE in __init__
+        # This is supposedly already done in __init__()
+        protoSpec.addMsg(msgSpec)
+
         self.roundTripProtoSpecViaString(protoSpec)             # GEEP
 
     def roundTripProtoSpecViaString(self, m):

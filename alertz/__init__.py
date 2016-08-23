@@ -1,7 +1,7 @@
 # ~/dev/py/alertz/alertz/__init__.py
 
-__version__ = '0.2.8'
-__version_date__ = '2016-08-07'
+__version__ = '0.2.9'
+__version_date__ = '2016-08-23'
 
 __all__ = ['__version__', '__version_date__',
            'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
@@ -14,7 +14,7 @@ __all__ = ['__version__', '__version_date__',
 from io import StringIO
 
 import fieldz
-from fieldz import fieldTypes as F
+from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 from fieldz import msgSpec as M
 from fieldz import typed as T
 

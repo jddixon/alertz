@@ -3,6 +3,8 @@
 dir:pkg:alertz
 dir:ign:logs
 
+txt:std:LICENSE-MIT.md
+
 # standardard config files and bash scripts
 code:std:.dvcz/projCfg
 code:std:.dvcz/projCfg.local

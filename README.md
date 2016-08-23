@@ -4,7 +4,7 @@
 network of machines, some on a local network (a cluster of machines
 behind a firewall) and other machines on the global Internet.  As
 conceived at the moment, the latter are virtual machines on Amazon's
-[AWS EC2](http://aws.amazon.com/ec2).  Participating servers communicate
+[AWS EC2](http://aws.amazon.com/ec2) cloud.  Participating servers communicate
 using messages in standard formats.  These are specified using either
 Google's
 [Protocol Buffers](http://developers.google.com/protocol-buffers)
@@ -12,7 +12,7 @@ or (more likely) the
 [fieldz](https://jddixon.github.io/fieldz)
 protocol, which is meant to be compatible with Protocol Buffers.
 
-Alertz is still being specified.
+alertz is still being specified.
 
 ## Message Types
 
@@ -22,19 +22,19 @@ Initially these relate to
 * DNS errors
 * hacking attempts
 
-All message types carry a UTC timestamp, a 32-bit value.  Many or mosst
-message types will include an optional, possibly zero-length remarks
+All message types carry a UTC timestamp, a 32-bit value.  Many or most
+message types will include an optional, possibly zero-length, remarks
 section.
 
 ### DNS Errors
 
-Some of the machines on the global Internet act as
+Some of the alertz-connected machines on the global Internet act as
 [name servers](https://en.wikipedia.org/wiki/Name_server).
 Each of these should report the same information on receiving a
 zone request.  The name servers are monitored by a utility (not part of
 this project) which periodically requests zone information for domains
 handled by the name servers.  If the information is not as expected,
-a **zoneMisMatch** message is sent over the alertz system.
+a **zoneMismatch** message is sent over the alertz system.
 
 The utility monitoring the name servers relies a **zoneList**, a list
 of domain names to check.  If this has internally inconsistent, the
@@ -45,7 +45,7 @@ has failed and cannot proceed without some intervention.
 
 If a participating machine detects an attemtpted hack attack, it can
 send a **badGuy** alert giving the UTC time of the attempt, the
-originating IP address and port, and the target address and report.
+originating IP address and port, and the target address and port number.
 
 The software for detecting such hacking attempts and that for handling them
 is not part of the alertz system.
@@ -69,7 +69,7 @@ languages.
 
 ## Project Status
 
-Pre-alpha.  The specification is tenative and incomplete.  Code and unit
+Pre-alpha.  The specification is tentative and incomplete.  Code and unit
 tests exist, but some tests fail.
 
 ## On-line Documentation
