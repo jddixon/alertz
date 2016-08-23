@@ -5,7 +5,7 @@ import sys
 #from io                 import StringIO
 #
 from fieldz.raw import LEN_PLUS_TYPE, readFieldHdr, readRawVarint
-#import fieldz.fieldTypes    as F
+#from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 #import fieldz.msgSpec       as M
 import fieldz.typed as T
 #

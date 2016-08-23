@@ -8,7 +8,7 @@ from io import StringIO
 from rnglib import SimpleRNG
 
 from fieldz.parser import StringProtoSpecParser
-import fieldz.fieldTypes as F
+from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 import fieldz.msgSpec as M
 import fieldz.typed as T
 from fieldz.chan import Channel
@@ -88,15 +88,18 @@ class TestAlertzSerialization (unittest.TestCase):
         values = self.zoneMismatchFields()        # list of quasi-random values
         zmmMsg = ZoneMismatchMsg(values)
 
-        self.assertEquals(msgSpec.name, zmmMsg.name)
+        self.assertEquals(msgSpec.name, zmmMsg._name)
         # we don't have any nested enums or messages
         self.assertEquals(0, len(zmmMsg.enums))
         self.assertEquals(0, len(zmmMsg.msgs))
 
         self.assertEquals(5, len(zmmMsg.fieldClasses))
         self.assertEquals(5, len(zmmMsg))        # number of fields in instance
-        for i in range(len(zmmMsg)):
-            self.assertEquals(values[i], zmmMsg[i].value)
+        self.assertEquals(values[0], zmmMsg.timestamp)
+        self.assertEquals(values[1], zmmMsg.seqNbr)
+        self.assertEquals(values[2], zmmMsg.zoneName)
+        self.assertEquals(values[3], zmmMsg.expectedSerial)
+        self.assertEquals(values[4], zmmMsg.actualSerial)
 
         # serialize the object to the channel -----------------------
 
@@ -141,7 +144,7 @@ class TestAlertzSerialization (unittest.TestCase):
 
         msgSpec = self.sOM.msgs[1]          # <------
         msgName = msgSpec.name
-        self.assertEquals('corruptList', msgName)
+        self.assertEquals('corruptZoneList', msgName)
 
         # Create a channel ------------------------------------------
         # its buffer will be used for both serializing # the instance
@@ -157,15 +160,16 @@ class TestAlertzSerialization (unittest.TestCase):
         values = self.corruptListFields()        # list of quasi-random values
         clMsg = CorruptListMsg(values)
 
-        self.assertEquals(msgSpec.name, clMsg.name)
+        self.assertEquals(msgSpec.name, clMsg._name)
         # we don't have any nested enums or messages
         self.assertEquals(0, len(clMsg.enums))
         self.assertEquals(0, len(clMsg.msgs))
 
         self.assertEquals(3, len(clMsg.fieldClasses))   # <---
         self.assertEquals(3, len(clMsg))        # number of fields in instance
-        for i in range(len(clMsg)):
-            self.assertEquals(values[i], clMsg[i].value)
+        self.assertEquals(values[0], clMsg.timestamp)
+        self.assertEquals(values[1], clMsg.seqNbr)
+        self.assertEquals(values[2], clMsg.remarks)
 
         # serialize the object to the channel -----------------------
         clMsg.writeStandAlone(chan)
@@ -219,15 +223,14 @@ class TestAlertzSerialization (unittest.TestCase):
         values = [rng.nextFileName(8), ]  # list of quasi-random values
         sdMsg = ShutdownMsg(values)
 
-        self.assertEquals(msgName, sdMsg.name)
+        self.assertEquals(msgName, sdMsg._name)
         # we don't have any nested enums or messages
         self.assertEquals(0, len(sdMsg.enums))
         self.assertEquals(0, len(sdMsg.msgs))
 
         self.assertEquals(1, len(sdMsg.fieldClasses))   # <---
         self.assertEquals(1, len(sdMsg))        # number of fields in instance
-        for i in range(len(sdMsg)):
-            self.assertEquals(values[i], sdMsg[i].value)
+        self.assertEquals(values[0], sdMsg.remarks)
 
         # serialize the object to the channel -----------------------
         sdMsg.writeStandAlone(chan)

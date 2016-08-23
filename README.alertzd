@@ -1,0 +1,8 @@
+~/dev/py/alertz/README.alertzd
+
+2012-12-24
+
+* development is this directory
+* production data in /var/alertz/
+* expects a upax.BlockingServer to manage each subdirectory
+* uses zeroMQ to talk to registered listeners

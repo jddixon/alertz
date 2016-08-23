@@ -23,9 +23,15 @@ setup(name='alertz',
       #
       # following could be in scripts/ subdir; SQuote
       scripts=['alertzd', ],
-      # MISSING description
+      #
+      description='alerts system for a cluster of computers',
+      url='https://jddixon.github.io/alertz',
       classifiers=[
+          'Development Status :: 2 - Pre-Alpha',
+          'Intended Audience :: Developers',
           'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3',
+          'Natural Language :: English',
+          'Programming Language :: Python 3',
+          'Topic :: Software Development :: Libraries :: Python Modules',
       ],
       )

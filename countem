@@ -6,7 +6,7 @@ then
   
   rm -rf build/* 
   
-  pySloc -L py  -X logs -X dist -v $@
+  pySloc -L py alertzd  -X logs -X dist -v $@
 else
   echo "DEV_BASE is not defined"
 fi
