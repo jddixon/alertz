@@ -1,5 +1,8 @@
 ~/dev/py/alertz/CHANGES
 
+v0.2.10
+    2016-11-01
+        * rename files, vars per PEP 8                              SLOC 1707
 v0.2.9
     2016-08-23
         * fix copyright, license, setup.py                          SLOC 1551
@@ -69,6 +72,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

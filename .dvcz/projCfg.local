@@ -1,9 +1,9 @@
 # ~/dev/py/alertz/.dvcz/projCfg.local
 
+txt:std:LICENSE-MIT.md
+
 dir:pkg:alertz
 dir:ign:logs
-
-txt:std:LICENSE-MIT.md
 
 # standardard config files and bash scripts
 code:std:.dvcz/projCfg

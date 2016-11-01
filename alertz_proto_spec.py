@@ -10,21 +10,21 @@ ALERTZ_PROTO_SPEC = """protocol org.xlattice.alertz
 # CHECK_ZONE MESSAGES from magick -----------------------------------
 # the serial number found in the DNS does not match our zone files.
 message zoneMismatch:
- timestamp      fuInt32
- seqNbr         vuInt32
- zoneName       lString     # @0: alphanumeric only
- expectedSerial vuInt32
- actualSerial   vuInt32
+ timestamp      fuint32
+ seqNbr         vuint32
+ zoneName       lstring     # @0: alphanumeric only
+ expectedSerial vuint32
+ actualSerial   vuint32
 
 # the zone list file itself is corrupt
 message corruptZoneList:
  # get the IP address of the reporting host from the connection
- timestamp      fuInt32
- seqNbr         vuInt32
- remarks        lString     # initially zero-length
+ timestamp      fuint32
+ seqNbr         vuint32
+ remarks        lstring     # initially zero-length
 
 message shutdown:
- remarks        lString     # goodbye message, null should be OK
+ remarks        lstring     # goodbye message, null should be OK
 
 # ===================================================================
 # DO NOT USE MESSAGE TYPES BELOW THIS LINE
@@ -35,89 +35,89 @@ message shutdown:
 
 # MISC MESSAGES -----------------------------------------------------
 message ack:
- remarks        lString     # null should be OK
+ remarks        lstring     # null should be OK
 
 message bye:
- remarks        lString     # null should be OK
+ remarks        lstring     # null should be OK
 
 message ok:
- remarks        lString     # null should be OK
+ remarks        lstring     # null should be OK
 
 # CHECK_IP_ADDR MESSAGES from guadalupe -----------------------------
 message newGWAddr:
- timestamp      fuInt32
- seqNbr         vuInt32
- oldIPV4Addr    lString
- newIPV4Addr    lString
+ timestamp      fuint32
+ seqNbr         vuint32
+ oldIPV4Addr    lstring
+ newIPV4Addr    lstring
 
 # CLJ PARSEABILITY from magick and LA and/or PA ---------------------
 # Need to avoid flood of such messages
 
 message unparseableCLJIndexPage:
  # get the IP address of the reporting host from the connection
- timestamp      fuInt32
- seqNbr         vuInt32
- url            lString
+ timestamp      fuint32
+ seqNbr         vuint32
+ url            lstring
 
 message unparseableCLJPosting:
  # get the IP address of the reporting host from the connection
- timestamp      fuInt32
- seqNbr         vuInt32
- url            lString
+ timestamp      fuint32
+ seqNbr         vuint32
+ url            lstring
 
 # CV SERVER MESSAGES ------------------------------------------------
 message cvNibble:
- timestamp      fuInt32
- seqNbr         vuInt32
- prospectID     fBytes20
- ipv4Addr       lString
+ timestamp      fuint32
+ seqNbr         vuint32
+ prospectID     fbytes20
+ ipv4Addr       lstring
 
  # want to trace path through site
 
 # HOST PING/SSH/BROWSEABILITY ---------------------------------------
 message hostUnreachable:
  # if network is split, source (reporting host) is significant
- timestamp      fuInt32
- seqNbr         vuInt32
- ipv4Addr       lString
+ timestamp      fuint32
+ seqNbr         vuint32
+ ipv4Addr       lstring
 
 # mail servers --------------------------------------------
 message mailServerNotUp:
- timestamp      fuInt32
- seqNbr         vuInt32
- ipv4Addr       lString
- port           vuInt32
+ timestamp      fuint32
+ seqNbr         vuint32
+ ipv4Addr       lstring
+ port           vuint32
 
 # name servers --------------------------------------------
 message nameServerNotUp:
- timestamp      fuInt32
- seqNbr         vuInt32
- ipv4Addr       lString
- port           vuInt32
+ timestamp      fuint32
+ seqNbr         vuint32
+ ipv4Addr       lstring
+ port           vuint32
 
 # web servers ---------------------------------------------
 message webServerNotUp:
- timestamp      fuInt32
- seqNbr         vuInt32
- ipv4Addr       lString
- port           vuInt32
+ timestamp      fuint32
+ seqNbr         vuint32
+ ipv4Addr       lstring
+ port           vuint32
 
 message webPageBadHash:
- timestamp      fuInt32
- seqNbr         vuInt32
- url            lString
- expectedHash   fBytes20
- actualHash     fBytes20
+ timestamp      fuint32
+ seqNbr         vuint32
+ url            lstring
+ expectedHash   fbytes20
+ actualHash     fbytes20
 
 # hacker activity reports ---------------------------------
 # Presumably sent because of frequent hits from the addr; if activity
 # is DOS, then these messages might exacerbate the problem.
 message badGuy:
- timestamp      fuInt32
- seqNbr         vuInt32
- fromAddr       lString
- fromPort       vuInt32
- toAddr         lString
- toPort         vuInt32
+ timestamp      fuint32
+ seqNbr         vuint32
+ fromAddr       lstring
+ fromPort       vuint32
+ toAddr         lstring
+ toPort         vuint32
 
 """
