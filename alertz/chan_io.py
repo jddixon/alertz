@@ -1,10 +1,13 @@
 # ~/dev/py/alertz/alertz/chanIO.py
 
+""" Send and receive messages on a connection. """
+
 import socket
-import sys
+
+#import sys
 #from io                 import StringIO
 #
-from fieldz.raw import LEN_PLUS_TYPE, readFieldHdr, readRawVarint
+from fieldz.raw import LEN_PLUS_TYPE, read_field_hdr, read_raw_varint
 #from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
 #import fieldz.msgSpec       as M
 import fieldz.typed as T
@@ -14,15 +17,15 @@ import fieldz.typed as T
 #from fieldz.chan        import Channel
 #from fieldz.msgImpl     import makeMsgClass, makeFieldClass
 
-# loop? can't find ALERTZ_MAX_MSG
-from alertz import *
+from alertz import BUFSIZE
 
-__all__ = ['recvFromCnx', 'sendOnCnx', 'sendToEndPoint', ]
+__all__ = ['recv_from_cnx', 'send_on_cnx', 'send_to_end_point', ]
 
 
-def recvFromCnx(cnx, chan):
+def recv_from_cnx(cnx, chan):
     """
     Receive a serialized message from a connection into a channel.
+
     On return the channel has been flipped (offset = 0, limit =
     data length).  Returns the msgNbr.
     """
@@ -40,40 +43,43 @@ def recvFromCnx(cnx, chan):
         raise IOError('initial read of message gets zero bytes')
 
     # read the header to determine the message type and its length
-    (pType, msgNbr) = readFieldHdr(chan)
+    (p_type, msg_nbr) = read_field_hdr(chan)
     # DEBUG
     print("CHAN_IO: count = %d; pType = %s, msgNbr = %s" % (
-        count, pType, msgNbr))
+        count, p_type, msg_nbr))
     # END
-    if pType != LEN_PLUS_TYPE:
-        raise IOError('message header type is %d, not LEN_PLUS_TYPE' % pType)
+    if p_type != LEN_PLUS_TYPE:
+        raise IOError('message header type is %d, not LEN_PLUS_TYPE' % p_type)
     # XXX raise exception of msgNbr <0 or msgNbr > 2
 
-    msgLen = readRawVarint(chan)
+    msg_len = read_raw_varint(chan)
 
     # XXX ignoring pathological possibility that offset > count
 
     # if we don't have all of the data, loop getting the rest
-    while count < msgLen:
-        vBuf = buffer(chan.buffer, count)
-        count += cnx.recv_into(vBuf, BUFSIZE - count)
+    while count < msg_len:
+        # vBuf = buffer(chan.buffer, count)
+        v_buf = memoryview(chan.buffer)[count:]
+        count += cnx.recv_into(v_buf, BUFSIZE - count)
     chan.position = count
     chan.flip()
-    return msgNbr
+    return msg_nbr
 
 
-def sendOnCnx(chan, cnx):
+def send_on_cnx(chan, cnx):
     """
     Send a serialized message from a channel over an existing connection.
+
     Suitable for use by servers sending replies or clients continuing a
     conversation.
     """
     pass        # XXX STUB
 
 
-def sendToEndPoint(chan, host, port):
+def send_to_end_point(chan, host, port):
     """
     Send a serialized message from a channel over a new connection.
+
     Suitable for use by clients sending a first message to a server.
     """
     if host is None or len(host) == 0:
@@ -86,6 +92,7 @@ def sendToEndPoint(chan, host, port):
     print("SEND_TO_END_POINT: host %s port %s limit %s" % (
         host, port, chan.limit))
     # END
-    vBuf = buffer(chan.buffer, 0, chan.limit)
-    skt.sendall(vBuf)               # raises exception on error
+    #vBuf = buffer(chan.buffer, 0, chan.limit)
+    v_buf = memoryview(chan.buffer)[0:chan.limit]
+    skt.sendall(v_buf)               # raises exception on error
     return skt                      # the sender has to close it

@@ -63,11 +63,12 @@ def log_worker(port, interval=1, level=logging.DEBUG):
         logger.log(level, "Hello from %i!" % os.getpid())
         time.sleep(interval)
 
-if __name__ == '__main__':
+
+def main():
     if len(sys.argv) > 1:
-        n = int(sys.argv[1])
+        ndx = int(sys.argv[1])
     else:
-        n = 2
+        ndx = 2
 
     port = 5555
 
@@ -76,7 +77,7 @@ if __name__ == '__main__':
         Process(
             target=log_worker, args=(
                 port,), kwargs=dict(
-                level=random.choice(LOG_LEVELS))) for i in range(n)]
+                level=random.choice(LOG_LEVELS))) for i in range(ndx)]
     [w.start() for w in workers]
 
     # start the log watcher
@@ -85,4 +86,8 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         pass
     finally:
-        [w.terminate() for w in workers]
+        for w in workers:
+            w.terminate()
+
+if __name__ == '__main__':
+    main()

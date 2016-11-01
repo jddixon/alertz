@@ -1,6 +1,6 @@
 # ~/dev/py/alertz/alertz/daemon.py
 
-__all__ = ['clearLogs', 'runTheDaemon',
+__all__ = ['clear_logs', 'runTheDaemon',
            ]
 
 import os
@@ -11,8 +11,8 @@ from xlattice.ftLog import LogMgr
 from xlattice.procLock import ProcLock
 from io import StringIO
 
-from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
-import fieldz.msgSpec as M
+from fieldz.field_types import FieldTypes as F, FieldStr as FS
+import fieldz.msg_spec as M
 import fieldz.typed as T
 
 from alertz import *
@@ -21,45 +21,45 @@ from alertz.chanIO import *
 from alertzProtoSpec import ALERTZ_PROTO_SPEC
 from fieldz.parser import StringProtoSpecParser
 from fieldz.chan import Channel
-from fieldz.msgImpl import makeMsgClass, makeFieldClass, MsgImpl
+from fieldz.msg_impl import make_msg_class, make_field_class, MsgImpl
 
 # DAEMON ------------------------------------------------------------
 
 
-def clearLogs(options):
-    logDir = options.logDir
-    print("DEBUG: clearLogs, logDir = '%s'" % logDir)
-    if os.path.exists(logDir):
-        if logDir.startswith('/') or logDir.startswith('..'):
-            raise RuntimeError("cannot delete %s/*" % logDir)
-        files = os.listdir(logDir)
+def clear_logs(options):
+    log_dir = options.log_dir
+    print("DEBUG: clearLogs, logDir = '%s'" % log_dir)
+    if os.path.exists(log_dir):
+        if log_dir.startswith('/') or log_dir.startswith('..'):
+            raise RuntimeError("cannot delete %s/*" % log_dir)
+        files = os.listdir(log_dir)
         if files:
             if options.verbose:
                 print("found %u files" % len(files))
             for file in files:
-                os.unlink(os.path.join(logDir, file))
+                os.unlink(os.path.join(log_dir, file))
 
 
 def actuallyRunTheDaemon(options):
     verbose = options.verbose
     chan = Channel(BUFSIZE)
-    s = None
+    string = None
     (cnx, addr) = (None, None)
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind(('', options.port))
-    s.listen(1)
+    string = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    string.bind(('', options.port))
+    string.listen(1)
     try:
         running = True
         while running:
             print("\nWAITING FOR CONNECTION")              # DEBUG
-            cnx, addr = s.accept()
+            cnx, addr = string.accept()
             try:
                 acceptMsg = "CONNECTION FROM %s" % str(addr)
                 if verbose:
                     print(acceptMsg)
                 print("BRANCH TO options.accessLog.log()")
                 sys.stdout.flush()
-                options.accessLog.log(acceptMsg)
+                options.access_log.log(acceptMsg)
                 print("BACK FROM options.access.log()")
                 sys.stdout.flush()
 
@@ -67,59 +67,59 @@ def actuallyRunTheDaemon(options):
                     chan.clear()
 
 #                   print "BRANCH TO recvFromCnx"  ; sys.stdout.flush()
-                    msgNdx = recvFromCnx(cnx, chan)  # may raise exception
+                    msgNdx = recv_from_cnx(cnx, chan)  # may raise exception
 
-                    (msg, realNdx) = MsgImpl.read(chan, sOM)
+                    (msg, realNdx) = MsgImpl.read(chan, STR_OBJ_MODEL)
 #                   print "  MSG_NDX: CALCULATED %s, REAL %s" % (
 #                                             msgNdx, realNdx)
                     # switch on message type
                     if msgNdx == 0:
                         print("GOT ZONE MISMATCH MSG")
                         print("    timestamp      %s" % msg.timestamp)
-                        print("    seqNbr         %s" % msg.seqNbr)
-                        print("    zoneName       %s" % msg.zoneName)
-                        print("    expectedSerial %s" % msg.expectedSerial)
-                        print("    actualSerial   %s" % msg.actualSerial)
-                        text = \
+                        print("    seqNbr         %s" % msg.seq_nbr)
+                        print("    zoneName       %s" % msg.zone_name)
+                        print("    expectedSerial %s" % msg.expected_serial)
+                        print("    actualSerial   %s" % msg.actual_serial)
+                        text =\
                             "mismatch, domain %s: expected serial %s, got %s" % (
-                                msg.zoneName, msg.expectedSerial, msg.actualSerial)
-                        options.alertzLog.log(text)
+                                msg.zone_name, msg.expected_serial, msg.actual_serial)
+                        options.alertz_log.log(text)
 
                     elif msgNdx == 1:
                         # timestamp, seqNb
                         print("GOT CORRUPT LIST MSG")
                         print("    timestamp      %s" % msg.timestamp)
-                        print("    seqNbr         %s" % msg.seqNbr)
-                        text = "corrupt list: %s" % (msg.seqNbr)
-                        options.alertzLog.log(text)
+                        print("    seqNbr         %s" % msg.seq_nbr)
+                        text = "corrupt list: %s" % (msg.seq_nbr)
+                        options.alertz_log.log(text)
 
                     elif msgNdx == 2:
                         # has one field, remarks
                         print("GOT SHUTDOWN MSG")
                         print("    remarks        %s" % msg.remarks)
                         running = False
-                        s.close()
+                        string.close()
                         # XXX STUB: log the message
                         text = "shutdown: %s" % (msg.remarks)
-                        options.alertzLog.log(text)
+                        options.alertz_log.log(text)
 
                     cnx.close()
                     break                   # permit only one message/cnx
 
-            except KeyboardInterrupt as ke:
+            except KeyboardInterrupt as k_exc:
                 print("<keyboard interrupt received while connection open>")
                 if cnx:
                     cnx.close()
                 running = False
 
-    except KeyboardInterrupt as ke:
+    except KeyboardInterrupt as k_exc:
         print("<keyboard interrupt received while listening>")
         # listening socket will be closed
     finally:
         if cnx:
             cnx.close()
-        if s:
-            s.close()
+        if string:
+            string.close()
 
         # COMMENTING THIS OUT PREVENTS SEGFAULT ON STOCKTON ---------
 #       if options.logMgr is not None:
@@ -127,9 +127,9 @@ def actuallyRunTheDaemon(options):
 #           options.logMgr = None
         # END COMMENTING OUT ----------------------------------------
 
-        if options.lockMgr is not None:
-            options.lockMgr.unlock()
-            options.lockMgr = None
+        if options.lock_mgr is not None:
+            options.lock_mgr.unlock()
+            options.lock_mgr = None
 
 
 def runTheDaemon(options):
@@ -139,7 +139,7 @@ def runTheDaemon(options):
     the daemon.
     """
     if options.verbose or options.showVersion or options.justShow:
-        print(options.pgmNameAndVersion, end=' ')
+        print(options.pgm_name_and_version, end=' ')
     if options.showTimestamp:
         print('run at %s GMT' % timestamp)   # could be prettier
     else:
@@ -147,7 +147,7 @@ def runTheDaemon(options):
 
     if options.justShow or options.verbose:
         print('justShow         = ' + str(options.justShow))
-        print('logDir           = ' + str(options.logDir))
+        print('logDir           = ' + str(options.log_dir))
         print('port             = ' + str(options.port))
         print('showTimestamp    = ' + str(options.showTimestamp))
         print('showVersion      = ' + str(options.showVersion))
@@ -156,23 +156,23 @@ def runTheDaemon(options):
         print('verbose          = ' + str(options.verbose))
 
     if not options.justShow:
-        lockMgr = None
-        accessLog = None
+        lock_mgr = None
+        access_log = None
         errorLog = None
 
         try:
-            lockMgr = ProcLock('alertzd')
-            options.lockMgr = lockMgr
-            logMgr = LogMgr(options.logDir)
-            options.logMgr = logMgr
+            lock_mgr = ProcLock('alertzd')
+            options.lock_mgr = lock_mgr
+            log_mgr = LogMgr(options.log_dir)
+            options.log_mgr = log_mgr
 
-            accessLog = logMgr.open('access')
-            options.accessLog = accessLog
+            access_log = log_mgr.open('access')
+            options.access_log = access_log
 
-            alertzLog = logMgr.open('alertz')
-            options.alertzLog = alertzLog
+            alertz_log = log_mgr.open('alertz')
+            options.alertz_log = alertz_log
 
-            errorLog = logMgr.open('error')
+            errorLog = log_mgr.open('error')
             options.errorLog = errorLog
 
             actuallyRunTheDaemon(options)
@@ -180,4 +180,4 @@ def runTheDaemon(options):
             print_exc()
             sys.exit(1)
         finally:
-            lockMgr.unlock()
+            lock_mgr.unlock()

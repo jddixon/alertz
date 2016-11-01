@@ -1,0 +1,12 @@
+# alertz/checkCoverage
+
+# see coverage.readthedocs.io/en/latestt/config.html
+#
+nosetests \
+    --with-coverage --cover-html \
+    --cover-tests \
+    --cover-erase \
+    --cover-branches \
+    --cover-inclusive  \
+    --cover-package=alertz  \
+    alertz/*.py test*.py

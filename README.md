@@ -1,5 +1,4 @@
 # alertz
-
 **alertz** is a Python3-based system for reporting events over a
 network of machines, some on a local network (a cluster of machines
 behind a firewall) and other machines on the global Internet.  As

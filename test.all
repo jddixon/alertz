@@ -4,10 +4,10 @@ if [ ! -z "${DEV_BASE// }" ]
 then
   cd $DEV_BASE/py/alertz
   
-  ./testAlertzProto.py
-  ./testAlertzSerialization.py
-  ./testNamespace.py
-  ./testWithDummyClient.py
+  ./test_alertz_proto.py
+  ./test_alertz_serialization.py
+  ./test_namespace.py
+  ./test_without_dummy_client.py
   
 else
   echo "DEV_BASE is not defined"

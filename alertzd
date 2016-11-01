@@ -7,20 +7,21 @@ import sys
 import time
 from argparse import ArgumentParser
 
-from alertz import *
+from alertz import __version__, __version_date__
+from alertz.daemon import runTheDaemon
 
 
 def main():
 
-    pgmNameAndVersion = "alertz v%s %s" % (__version__, __version_date__)
+    pgm_name_and_version = "alertz v%s %s" % (__version__, __version_date__)
     timestamp = "%04d%02d%02d-%02d%02d%02d" % time.gmtime()[:6]
 
     # -- program defaults -------------------------------------------
 
-    with open('/etc/hostname', 'r') as f:
-        thisHost = f.read().strip()
+    with open('/etc/hostname', 'r') as file:
+        this_host = file.read().strip()
     # DEBUG
-    print "thisHost is '%s'" % thisHost
+    print("thisHost is '%s'" % this_host)
     # END
 
     # -- check for config file --------------------------------------
@@ -49,27 +50,29 @@ def main():
                         help='talk a lot')
 
     args = parser.parse_args()      # a Namespace object
-        if name == '__dir__':
-            return tuple(self)
+
+    # XXX CODE FRAGMENT
+    # if name == '__dir__':
+    #    return tuple(self)
 
     # -- fixups -----------------------------------------------------
-    args.pgmNameAndVersion = pgmNameAndVersion
+    args.pgm_name_and_version = pgm_name_and_version
     args.timestamp = timestamp
 
     # -- sanity checks ----------------------------------------------
     if args.port <= 0 or 65536 <= args.port:
-        print "port '%d' is out of range" % args.port
+        print("port '%d' is out of range" % args.port)
         sys.exit(1)
 
     # XXX logs/ must be a directory; {access,error}.log must be files
-    logDir = 'logs'
-    if not os.path.exists(logDir):
-        os.mkdir(logDir)
-    args.logDir = logDir
+    log_dir = 'logs'
+    if not os.path.exists(log_dir):
+        os.mkdir(log_dir)
+    args.log_dir = log_dir
 
     # fixups --------------------------------------------------------
-    args.pgmNameAndVersion = pgmNameAndVersion
-    args.thisHost = thisHost
+    args.pgm_name_and_version = pgm_name_and_version
+    args.this_host = this_host
 
     # -- do it ------------------------------------------------------
     runTheDaemon(args)
