@@ -15,7 +15,7 @@ from rnglib import SimpleRNG
 from alertz import *
 from alertz.chanIO import *
 from alertz.daemon import runTheDaemon, clear_logs
-from alertzProtoSpec import ALERTZ_PROTO_SPEC
+from alertz_proto_spec import ALERTZ_PROTO_SPEC
 from fieldz.parser import StringProtoSpecParser
 from fieldz.chan import Channel
 from fieldz.msg_impl import make_msg_class, make_field_class
