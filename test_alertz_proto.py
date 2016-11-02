@@ -18,7 +18,7 @@ import fieldz.reg as R
 from fieldz import reg
 
 # PROTOCOLS ---------------------------------------------------------
-from alertzProtoSpec import ALERTZ_PROTO_SPEC
+from alertz_proto_spec import ALERTZ_PROTO_SPEC
 
 # TESTS -------------------------------------------------------------
 

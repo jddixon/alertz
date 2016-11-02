@@ -15,7 +15,7 @@ import fieldz.typed as T
 #from alertzProtoSpec    import ALERTZ_PROTO_SPEC
 #from fieldz.parser      import StringProtoSpecParser
 #from fieldz.chan        import Channel
-#from fieldz.msgImpl     import makeMsgClass, makeFieldClass
+#from fieldz.msgImpl     import make_msg_class, make_field_class
 
 from alertz import BUFSIZE
 

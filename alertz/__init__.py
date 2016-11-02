@@ -11,7 +11,7 @@ from fieldz.field_types import FieldTypes as F, FieldStr as FS
 from fieldz import msg_spec as M
 from fieldz import typed as T
 
-from alertzProtoSpec import ALERTZ_PROTO_SPEC
+from alertz_proto_spec import ALERTZ_PROTO_SPEC
 from fieldz.parser import StringProtoSpecParser
 from fieldz.chan import Channel
 from fieldz.msg_impl import make_msg_class, make_field_class
@@ -23,8 +23,8 @@ __all__ = ['__version__', '__version_date__',
            'ZoneMismatchMsg', 'CorruptListMsg', 'SHUTDOWN_MSG',
            ]
 
-__version__ = '0.2.10'
-__version_date__ = '2016-11-01'
+__version__ = '0.2.11'
+__version_date__ = '2016-11-02'
 
 BUFSIZE = 16 * 1024                   # must allow for all using protocols
 
