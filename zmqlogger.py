@@ -78,7 +78,7 @@ def main():
             target=log_worker, args=(
                 port,), kwargs=dict(
                 level=random.choice(LOG_LEVELS))) for i in range(ndx)]
-    [w.start() for w in workers]
+    [worker.start() for worker in workers]
 
     # start the log watcher
     try:
@@ -86,8 +86,8 @@ def main():
     except KeyboardInterrupt:
         pass
     finally:
-        for w in workers:
-            w.terminate()
+        for worker in workers:
+            worker.terminate()
 
 if __name__ == '__main__':
     main()
