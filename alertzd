@@ -7,8 +7,8 @@ import sys
 import time
 from argparse import ArgumentParser
 
-from alertz import __version__, __version_date__
-from alertz.daemon import runTheDaemon
+from alertz import __version__, __version_date__, ALERTZ_PORT, ALERTZ_PROTO
+from alertz.daemon import run_the_daemon
 
 
 def main():
@@ -60,7 +60,7 @@ def main():
     args.timestamp = timestamp
 
     # -- sanity checks ----------------------------------------------
-    if args.port <= 0 or 65536 <= args.port:
+    if args.port <= 0 or args.port >= 65536:
         print("port '%d' is out of range" % args.port)
         sys.exit(1)
 
@@ -75,7 +75,7 @@ def main():
     args.this_host = this_host
 
     # -- do it ------------------------------------------------------
-    runTheDaemon(args)
+    run_the_daemon(args)
 
 if __name__ == '__main__':
     main()

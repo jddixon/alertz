@@ -1,5 +1,8 @@
 ~/dev/py/alertz/CHANGES
 
+v0.2.12
+    2016-11-08
+        * more PEP 8                                                SLOC 1723
 v0.2.11
     2016-11-02
         * correct import of alertz_proto_spec                       SLOC 1726
@@ -75,6 +78,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

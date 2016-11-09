@@ -110,11 +110,11 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertEqual(BUFSIZE, len(buf))
 
         # create the ZoneMismatchMsg class ------------------------------
-        ZoneMismatchMsg = make_msg_class(self.str_obj_model, msg_name)
+        zone_mismatch_msg_cls = make_msg_class(self.str_obj_model, msg_name)
 
         # create a message instance ---------------------------------
         values = self.zone_mismatch_fields()        # list of quasi-random values
-        zmm_msg = ZoneMismatchMsg(values)
+        zmm_msg = zone_mismatch_msg_cls(values)
 
         self.assertEqual(msg_spec.name, zmm_msg._name)
         # we don't have any nested enums or messages
@@ -152,7 +152,7 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertTrue(zmm_msg.__eq__(read_back))
 
         # produce another message from the same values --------------
-        zmm_msg2 = ZoneMismatchMsg(values)
+        zmm_msg2 = zone_mismatch_msg_cls(values)
         chan2 = Channel(BUFSIZE)
         zmm_msg2.write_stand_alone(chan2)
         chan2.flip()
@@ -187,11 +187,11 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertEqual(BUFSIZE, len(buf))
 
         # create the CorruptListMsg class ------------------------------
-        CorruptListMsg = make_msg_class(self.str_obj_model, msg_name)
+        corrupt_list_msg_cls = make_msg_class(self.str_obj_model, msg_name)
 
         # create a message instance ---------------------------------
         values = self.corrupt_list_fields()        # list of quasi-random values
-        cl_msg = CorruptListMsg(values)
+        cl_msg = corrupt_list_msg_cls(values)
 
         self.assertEqual(msg_spec.name, cl_msg._name)
         # we don't have any nested enums or messages
@@ -220,7 +220,7 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertTrue(cl_msg.__eq__(read_back))
 
         # produce another message from the same values --------------
-        cl_msg2 = CorruptListMsg(values)
+        cl_msg2 = corrupt_list_msg_cls(values)
         chan2 = Channel(BUFSIZE)
         cl_msg2.write_stand_alone(chan2)
         chan2.flip()
@@ -229,7 +229,7 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertTrue(cl_msg.__eq__(copy2))
         self.assertTrue(cl_msg2.__eq__(copy2))       # GEEP GEEP
 
-    def testShutdownMsg(self):
+    def test_shutdown_msg(self):
         # DEBUG
         print("\nTEST_SHUTDOWN_MSG")
         # END
@@ -254,11 +254,11 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertEqual(BUFSIZE, len(buf))
 
         # create the CorruptListMsg class ------------------------------
-        SHUTDOWN_MSG = make_msg_class(self.str_obj_model, msg_name)
+        shutdown_msg_cls = make_msg_class(self.str_obj_model, msg_name)
 
         # create a message instance ---------------------------------
         values = [RNG.next_file_name(8), ]  # list of quasi-random values
-        sd_msg = SHUTDOWN_MSG(values)
+        sd_msg = shutdown_msg_cls(values)
 
         self.assertEqual(msg_name, sd_msg._name)
         # we don't have any nested enums or messages
@@ -285,7 +285,7 @@ class TestAlertzSerialization(unittest.TestCase):
         self.assertTrue(sd_msg.__eq__(read_back))
 
         # produce another message from the same values --------------
-        sd_msg2 = SHUTDOWN_MSG(values)
+        sd_msg2 = shutdown_msg_cls(values)
         chan2 = Channel(BUFSIZE)
         sd_msg2.write_stand_alone(chan2)
         chan2.flip()

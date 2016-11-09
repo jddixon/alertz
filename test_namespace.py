@@ -11,7 +11,7 @@ from alertz import Namespace
 RNG = SimpleRNG(time.time())
 
 # THIS WILL BE WRONG
-next_seq_nbr = 0                 # increment after each use
+NEXT_SEQ_NBR = 0                 # increment after each use
 
 
 class TestNamespace(unittest.TestCase):
@@ -26,11 +26,11 @@ class TestNamespace(unittest.TestCase):
 
     def msg_values(self):
         """ returns a list """
-        global next_seq_nbr
+        global NEXT_SEQ_NBR
 
         timestamp = int(time.time())
-        seq_nbr = next_seq_nbr
-        next_seq_nbr += 1     # used, so increment it
+        seq_nbr = NEXT_SEQ_NBR
+        NEXT_SEQ_NBR += 1     # used, so increment it
 
         zone_name = RNG.next_file_name(8)
         expected_serial = RNG.next_int32()
@@ -43,7 +43,7 @@ class TestNamespace(unittest.TestCase):
 
     # actual unit test(s) -------------------------------------------
 
-    def testANamespace(self):
+    def test_a_namespace(self):
 
         now = int(time.time())
         options = {}                # what we convert into a namespace of sorts

@@ -20,11 +20,11 @@ __all__ = ['__version__', '__version_date__',
            'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
            'Namespace',
            'STR_OBJ_MODEL', 'PROTO_NAME',
-           'ZoneMismatchMsg', 'CorruptListMsg', 'SHUTDOWN_MSG',
+           'ZONE_MISMATCH_MSG', 'CORRUPT_LIST_MSG', 'SHUTDOWN_MSG',
            ]
 
-__version__ = '0.2.11'
-__version_date__ = '2016-11-02'
+__version__ = '0.2.12'
+__version_date__ = '2016-11-08'
 
 BUFSIZE = 16 * 1024                   # must allow for all using protocols
 
@@ -36,8 +36,8 @@ STR_OBJ_MODEL = STR_PS_PARSER.parse()
 # the dotted name of the protocol
 PROTO_NAME = STR_OBJ_MODEL.name
 
-ZoneMismatchMsg = make_msg_class(STR_OBJ_MODEL, 'zoneMismatch')
-CorruptListMsg = make_msg_class(STR_OBJ_MODEL, 'corruptList')
+ZONE_MISMATCH_MSG = make_msg_class(STR_OBJ_MODEL, 'zoneMismatch')
+CORRUPT_LIST_MSG = make_msg_class(STR_OBJ_MODEL, 'corruptList')
 SHUTDOWN_MSG = make_msg_class(STR_OBJ_MODEL, 'shutdown')
 
 # the maximum number of bytes in a message

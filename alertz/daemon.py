@@ -1,22 +1,21 @@
 # ~/dev/py/alertz/alertz/daemon.py
 
-__all__ = ['clear_logs', 'runTheDaemon',
+__all__ = ['clear_logs', 'run_the_daemon',
            ]
 
 import os
 import socket
 import sys
-import time
 from xlattice.ftLog import LogMgr
 from xlattice.procLock import ProcLock
 from io import StringIO
 
 from fieldz.field_types import FieldTypes as F, FieldStr as FS
-import fieldz.msg_spec as M
-import fieldz.typed as T
+#import fieldz.msg_spec as M
+#import fieldz.typed as T
 
-from alertz import *
-from alertz.chanIO import *
+from alertz import STR_OBJ_MODEL, BUFSIZE
+from alertz.chan_io import recv_from_cnx
 
 from alertzProtoSpec import ALERTZ_PROTO_SPEC
 from fieldz.parser import StringProtoSpecParser
@@ -40,7 +39,7 @@ def clear_logs(options):
                 os.unlink(os.path.join(log_dir, file))
 
 
-def actuallyRunTheDaemon(options):
+def actually_run_the_daemon(options):
     verbose = options.verbose
     chan = Channel(BUFSIZE)
     string = None
@@ -54,12 +53,12 @@ def actuallyRunTheDaemon(options):
             print("\nWAITING FOR CONNECTION")              # DEBUG
             cnx, addr = string.accept()
             try:
-                acceptMsg = "CONNECTION FROM %s" % str(addr)
+                accept_msg = "CONNECTION FROM %s" % str(addr)
                 if verbose:
-                    print(acceptMsg)
+                    print(accept_msg)
                 print("BRANCH TO options.accessLog.log()")
                 sys.stdout.flush()
-                options.access_log.log(acceptMsg)
+                options.access_log.log(accept_msg)
                 print("BACK FROM options.access.log()")
                 sys.stdout.flush()
 
@@ -67,13 +66,13 @@ def actuallyRunTheDaemon(options):
                     chan.clear()
 
 #                   print "BRANCH TO recvFromCnx"  ; sys.stdout.flush()
-                    msgNdx = recv_from_cnx(cnx, chan)  # may raise exception
+                    msg_ndx = recv_from_cnx(cnx, chan)  # may raise exception
 
-                    (msg, realNdx) = MsgImpl.read(chan, STR_OBJ_MODEL)
+                    (msg, real_ndx) = MsgImpl.read(chan, STR_OBJ_MODEL)
 #                   print "  MSG_NDX: CALCULATED %s, REAL %s" % (
 #                                             msgNdx, realNdx)
                     # switch on message type
-                    if msgNdx == 0:
+                    if msg_ndx == 0:
                         print("GOT ZONE MISMATCH MSG")
                         print("    timestamp      %s" % msg.timestamp)
                         print("    seqNbr         %s" % msg.seq_nbr)
@@ -85,7 +84,7 @@ def actuallyRunTheDaemon(options):
                                 msg.zone_name, msg.expected_serial, msg.actual_serial)
                         options.alertz_log.log(text)
 
-                    elif msgNdx == 1:
+                    elif msg_ndx == 1:
                         # timestamp, seqNb
                         print("GOT CORRUPT LIST MSG")
                         print("    timestamp      %s" % msg.timestamp)
@@ -93,7 +92,7 @@ def actuallyRunTheDaemon(options):
                         text = "corrupt list: %s" % (msg.seq_nbr)
                         options.alertz_log.log(text)
 
-                    elif msgNdx == 2:
+                    elif msg_ndx == 2:
                         # has one field, remarks
                         print("GOT SHUTDOWN MSG")
                         print("    remarks        %s" % msg.remarks)
@@ -132,7 +131,7 @@ def actuallyRunTheDaemon(options):
             options.lock_mgr = None
 
 
-def runTheDaemon(options):
+def run_the_daemon(options):
     """
     Completes setting up the namespace; if this isn't a "just-show" run,
     creates lock and log managers, creates the logs, and actually runs
@@ -141,7 +140,7 @@ def runTheDaemon(options):
     if options.verbose or options.showVersion or options.justShow:
         print(options.pgm_name_and_version, end=' ')
     if options.showTimestamp:
-        print('run at %s GMT' % timestamp)   # could be prettier
+        print('run at %s GMT' % options.timestamp)   # could be prettier
     else:
         print()                               # there's a comma up there
 
@@ -158,7 +157,7 @@ def runTheDaemon(options):
     if not options.justShow:
         lock_mgr = None
         access_log = None
-        errorLog = None
+        error_log = None
 
         try:
             lock_mgr = ProcLock('alertzd')
@@ -172,10 +171,10 @@ def runTheDaemon(options):
             alertz_log = log_mgr.open('alertz')
             options.alertz_log = alertz_log
 
-            errorLog = log_mgr.open('error')
-            options.errorLog = errorLog
+            error_log = log_mgr.open('error')
+            options.error_log = error_log
 
-            actuallyRunTheDaemon(options)
+            actually_run_the_daemon(options)
         except:
             print_exc()
             sys.exit(1)

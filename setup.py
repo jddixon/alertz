@@ -17,13 +17,13 @@ setup(name='alertz',
       #
       # wherever we have a .py file that will be imported, we
       # list it here, without the extension but SQuoted
-      py_modules=['alertz_proto_spec'],
+      py_modules=[],
       #
       # a package has a subdir and an __init__.py
       packages=['alertz', ],
       #
       # following could be in scripts/ subdir; SQuote
-      scripts=['alertz_proto_spec', 'alertzd', ],
+      scripts=['alertzd', ],
       #
       description='alerts system for a cluster of computers',
       url='https://jddixon.github.io/alertz',

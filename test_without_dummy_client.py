@@ -12,16 +12,16 @@ import fieldz.msg_spec as M
 import fieldz.typed as T
 
 from rnglib import SimpleRNG
-from alertz import *
-from alertz.chanIO import *
-from alertz.daemon import runTheDaemon, clear_logs
+from alertz import CORRUPT_LIST_MSG, ZONE_MISMATCH_MSG
+# from alertz.chanIO import *
+from alertz.daemon import run_the_daemon, clear_logs
 from alertz_proto_spec import ALERTZ_PROTO_SPEC
 from fieldz.parser import StringProtoSpecParser
 from fieldz.chan import Channel
 from fieldz.msg_impl import make_msg_class, make_field_class
 
 RNG = SimpleRNG(time.time())
-next_seq_nbr = 0                         # increment after each use
+NEXT_SEQ_NBR = 0                         # increment after each use
 
 
 class TestWithDummyClient(unittest.TestCase):
@@ -49,11 +49,11 @@ class TestWithDummyClient(unittest.TestCase):
     # -----------------------------------------------------
     def zone_mismatch_fields(self):
         """ returns a list """
-        global next_seq_nbr
+        global NEXT_SEQ_NBR
 
         timestamp = int(time.time())
-        seq_nbr = next_seq_nbr
-        next_seq_nbr += 1     # used, so increment it
+        seq_nbr = NEXT_SEQ_NBR
+        NEXT_SEQ_NBR += 1     # used, so increment it
 
         zone_name = RNG.next_file_name(8)
         expected_serial = RNG.next_int32()
@@ -66,23 +66,23 @@ class TestWithDummyClient(unittest.TestCase):
 
     def next_zone_mismatch_msg(self):
         values = self.zone_mismatch_fields()
-        return ZoneMismatchMsg(values)
+        return ZONE_MISMATCH_MSG(values)
 
     # -----------------------------------------------------
     def corrupt_list_fields(self):
-        global next_seq_nbr
+        global NEXT_SEQ_NBR
         timestamp = int(time.time())
-        seq_nbr = next_seq_nbr
-        next_seq_nbr += 1     # used, so increment it
+        seq_nbr = NEXT_SEQ_NBR
+        NEXT_SEQ_NBR += 1     # used, so increment it
         remarks = RNG.next_file_name(16)
         return [timestamp, seq_nbr, remarks]
 
-    def nextCorruptListMsg(self):
+    def next_corrupt_list_msg(self):
         values = self.corrupt_list_fields()
-        return CorruptListMsg(values)           # GEEP
+        return CORRUPT_LIST_MSG(values)           # GEEP
 
     # -----------------------------------------------------
-    def shutdownFields(self):
+    def shutdown_fields(self):
         #       global nextSeqNbr
         #       timestamp       = int(time.time())
         #       seqNbr          = nextSeqNbr
@@ -90,9 +90,9 @@ class TestWithDummyClient(unittest.TestCase):
         remarks = RNG.next_file_name(16)
         return [remarks, ]
 
-    def nextShutdownMsg(self):
-        values = self.shutdownFields()
-        return SHUTDOWN_MSG(values)              # GEEP
+    def next_shutdown_msg(self):
+        values = self.shutdown_fields()
+        return shutdown_msg_cls(values)              # GEEP
 
     # actual unit test(s) -------------------------------------------
 
@@ -130,7 +130,7 @@ class TestWithDummyClient(unittest.TestCase):
         self.do_clear_logs(ns_)
 
         # start the daemon --------------------------------
-        daemon_t = threading.Thread(target=runTheDaemon, args=(ns_,))
+        daemon_t = threading.Thread(target=run_the_daemon, args=(ns_,))
         daemon_t.start()
 
         # give the daemon time to wake up  --------------------------
@@ -141,9 +141,9 @@ class TestWithDummyClient(unittest.TestCase):
         msgs_sent = []
         for nnn in range(msg_count):
             msg = self.next_zone_mismatch_msg()
-            seqNbrField = msg[1]
+            seq_nbr_field = msg[1]
             # XXX by name would be better!
-            self.assertEqual(nnn, seqNbrField.value)
+            self.assertEqual(nnn, seq_nbr_field.value)
 
             # serialize msg into the channel
             chan.clear()
@@ -166,7 +166,7 @@ class TestWithDummyClient(unittest.TestCase):
         time.sleep(0.05)
 
         # build and send shutdown msg -------------------------------
-        msg = self.nextShutdownMsg()
+        msg = self.next_shutdown_msg()
         chan.clear()
         msg.write_stand_alone(chan)
         chan.flip()
