@@ -4,18 +4,17 @@
 import time
 import unittest
 from io import StringIO
-from importlib import reload        # <---------------------
+# from importlib import reload        # <---------------------
 from rnglib import SimpleRNG
 
+from wireops.chan import Channel
+
 from fieldz.parser import StringProtoSpecParser
-from fieldz.field_types import FieldTypes as F, FieldStr as FS
 import fieldz.msg_spec as M
-import fieldz.typed as T
-from fieldz.chan import Channel
-from fieldz.msg_impl import make_msg_class, make_field_class, MsgImpl
+from fieldz.msg_impl import make_msg_class, MsgImpl
 
 #import alertz_proto_spec
-# reload(alertz_proto_spec)
+# reload(alertz_proto_spec)         # <----------------------
 from alertz_proto_spec import ALERTZ_PROTO_SPEC
 
 BUFSIZE = 16 * 1024
@@ -118,6 +117,7 @@ class TestAlertzSerialization(unittest.TestCase):
 
         self.assertEqual(msg_spec.name, zmm_msg._name)
         # we don't have any nested enums or messages
+        # pylint: disable=no-member
         self.assertEqual(0, len(zmm_msg.enums))
         self.assertEqual(0, len(zmm_msg.msgs))
 
@@ -141,7 +141,7 @@ class TestAlertzSerialization(unittest.TestCase):
         chan.flip()
 
         # deserialize the channel, making a clone of the message ----
-        (read_back, nn2) = MsgImpl.read(chan, self.str_obj_model)
+        (read_back, _) = MsgImpl.read(chan, self.str_obj_model)
         self.assertIsNotNone(read_back)
 
         # DEBUG
@@ -157,7 +157,7 @@ class TestAlertzSerialization(unittest.TestCase):
         zmm_msg2.write_stand_alone(chan2)
         chan2.flip()
 
-        (copy2, nn3) = MsgImpl.read(chan2, self.str_obj_model)
+        (copy2, _) = MsgImpl.read(chan2, self.str_obj_model)
         self.assertTrue(zmm_msg.__eq__(copy2))
         self.assertTrue(zmm_msg2.__eq__(copy2))       # GEEP
 
@@ -195,6 +195,7 @@ class TestAlertzSerialization(unittest.TestCase):
 
         self.assertEqual(msg_spec.name, cl_msg._name)
         # we don't have any nested enums or messages
+        # pylint: disable=no-member
         self.assertEqual(0, len(cl_msg.enums))
         self.assertEqual(0, len(cl_msg.msgs))
 
@@ -209,7 +210,7 @@ class TestAlertzSerialization(unittest.TestCase):
         chan.flip()
 
         # deserialize the channel, making a clone of the message ----
-        (read_back, nn4) = MsgImpl.read(chan, self.str_obj_model)
+        (read_back, _) = MsgImpl.read(chan, self.str_obj_model)
         self.assertIsNotNone(read_back)
 
         # DEBUG
@@ -225,7 +226,7 @@ class TestAlertzSerialization(unittest.TestCase):
         cl_msg2.write_stand_alone(chan2)
         chan2.flip()
 
-        (copy2, nn4) = MsgImpl.read(chan2, self.str_obj_model)
+        (copy2, _) = MsgImpl.read(chan2, self.str_obj_model)
         self.assertTrue(cl_msg.__eq__(copy2))
         self.assertTrue(cl_msg2.__eq__(copy2))       # GEEP GEEP
 
@@ -262,6 +263,7 @@ class TestAlertzSerialization(unittest.TestCase):
 
         self.assertEqual(msg_name, sd_msg._name)
         # we don't have any nested enums or messages
+        # pylint: disable=no-member
         self.assertEqual(0, len(sd_msg.enums))
         self.assertEqual(0, len(sd_msg.msgs))
 
@@ -274,7 +276,7 @@ class TestAlertzSerialization(unittest.TestCase):
         chan.flip()
 
         # deserialize the channel, making a clone of the message ----
-        (read_back, nn5) = MsgImpl.read(chan, self.str_obj_model)
+        (read_back, _) = MsgImpl.read(chan, self.str_obj_model)
         self.assertIsNotNone(read_back)
 
         # DEBUG
@@ -290,7 +292,7 @@ class TestAlertzSerialization(unittest.TestCase):
         sd_msg2.write_stand_alone(chan2)
         chan2.flip()
 
-        (copy2, nn6) = MsgImpl.read(chan2, self.str_obj_model)
+        (copy2, _) = MsgImpl.read(chan2, self.str_obj_model)
         self.assertTrue(sd_msg.__eq__(copy2))
         self.assertTrue(sd_msg2.__eq__(copy2))       # GEEP GEEP GEEP
 

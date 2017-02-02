@@ -6,25 +6,23 @@ Alert message system.
 
 from io import StringIO
 
-import fieldz
-from fieldz.field_types import FieldTypes as F, FieldStr as FS
+from wireops.chan import Channel
+from wireops import typed as T
+
 from fieldz import msg_spec as M
-from fieldz import typed as T
+from fieldz.parser import StringProtoSpecParser
+from fieldz.msg_impl import make_msg_class, make_field_class
 
 from alertz_proto_spec import ALERTZ_PROTO_SPEC
-from fieldz.parser import StringProtoSpecParser
-from fieldz.chan import Channel
-from fieldz.msg_impl import make_msg_class, make_field_class
 
 __all__ = ['__version__', '__version_date__',
            'ALERTZ_MAX_MSG', 'ALERTZ_PORT', 'BUFSIZE',
            'Namespace',
            'STR_OBJ_MODEL', 'PROTO_NAME',
-           'ZONE_MISMATCH_MSG', 'CORRUPT_LIST_MSG', 'SHUTDOWN_MSG',
-           ]
+           'ZONE_MISMATCH_MSG', 'CORRUPT_LIST_MSG', 'SHUTDOWN_MSG', ]
 
-__version__ = '0.2.12'
-__version_date__ = '2016-11-08'
+__version__ = '0.2.13'
+__version_date__ = '2017-02-02'
 
 BUFSIZE = 16 * 1024                   # must allow for all using protocols
 
@@ -52,7 +50,7 @@ ALERTZ_PORT = 55555
 class Namespace(dict):
 
     def __init__(self, pairs={}):
-        super(Namespace, self).__init__(pairs)
+        super().__init__(pairs)
 
     def __getattribute__(self, name):
         try:
