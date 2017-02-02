@@ -1,1 +1,120 @@
-dummy index
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>alertz</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/ghp.css" />
+</head>
+<body>
+<div class="content">
+<h1>
+<a id="user-content-alertz" class="anchor" href="#alertz" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>alertz</h1>
+
+<p><strong>alertz</strong> is a Python3-based system for reporting events over a
+network of machines, some on a local network (a cluster of machines
+behind a firewall) and other machines on the global Internet.  As
+conceived at the moment, the latter are virtual machines on Amazon's
+<a href="http://aws.amazon.com/ec2">AWS EC2</a> cloud.  Participating servers communicate
+using messages in standard formats.  These are specified using either
+Google's
+<a href="http://developers.google.com/protocol-buffers">Protocol Buffers</a>
+or (more likely) the
+<a href="https://jddixon.github.io/fieldz">fieldz</a>
+protocol, which is meant to be compatible with Protocol Buffers.</p>
+
+<p>alertz is still being specified.</p>
+
+<h2>
+<a id="user-content-message-types" class="anchor" href="#message-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Message Types</h2>
+
+<p>Initially these relate to</p>
+
+<ul>
+<li>network partitioning</li>
+<li>DNS errors</li>
+<li>hacking attempts</li>
+</ul>
+
+<p>All message types carry a UTC timestamp, a 32-bit value.  Many or most
+message types will include an optional, possibly zero-length, remarks
+section.</p>
+
+<h3>
+<a id="user-content-dns-errors" class="anchor" href="#dns-errors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DNS Errors</h3>
+
+<p>Some of the alertz-connected machines on the global Internet act as
+<a href="https://en.wikipedia.org/wiki/Name_server">name servers</a>.
+Each of these should report the same information on receiving a
+zone request.  The name servers are monitored by a utility (not part of
+this project) which periodically requests zone information for domains
+handled by the name servers.  If the information is not as expected,
+a <strong>zoneMismatch</strong> message is sent over the alertz system.</p>
+
+<p>The utility monitoring the name servers relies a <strong>zoneList</strong>, a list
+of domain names to check.  If this has internally inconsistent, the
+utiltiy sends a <strong>corruptZoneList</strong> alert, signifying that the utility
+has failed and cannot proceed without some intervention.</p>
+
+<h3>
+<a id="user-content-hacking-attempts" class="anchor" href="#hacking-attempts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hacking Attempts</h3>
+
+<p>If a participating machine detects an attemtpted hack attack, it can
+send a <strong>badGuy</strong> alert giving the UTC time of the attempt, the
+originating IP address and port, and the target address and port number.</p>
+
+<p>The software for detecting such hacking attempts and that for handling them
+is not part of the alertz system.</p>
+
+<h3>
+<a id="user-content-network-partitioning" class="anchor" href="#network-partitioning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Network Partitioning</h3>
+
+<p>This can occur for a number of reasons, but the most likely is that
+the firewall router is down or has the wrong IP address.  If such a
+conditon is detected, a <strong>newGWAddr</strong> alert is sent.</p>
+
+<h2>
+<a id="user-content-underlying-messaging-system" class="anchor" href="#underlying-messaging-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Underlying Messaging System</h2>
+
+<p><a href="http://zeromq.org">ZeroMQ</a>.  This is a mature, fast, distributed
+messaging system with implementations in a variety of programming
+languages.</p>
+
+<h2>
+<a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<ul>
+<li><a href="https://jddixon.github.io/fieldz">fieldz</a></li>
+<li><a href="http://zeromq.org">ZeroMQ</a></li>
+</ul>
+
+<h2>
+<a id="user-content-project-status" class="anchor" href="#project-status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Status</h2>
+
+<p>Pre-alpha.  The specification is tentative and incomplete.  Code and unit
+tests exist, but some tests fail.</p>
+
+<h2>Licensing</h2>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />The material on this github.io website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<p>Project software is licensed under an MIT license.
+Follow the SOFTWARE LICENSE link below for more information on project software licensing.</p>  <div class="f">
+    <hr />
+    <div class="license">
+      <p><a href="LICENSE-MIT.html">SOFTWARE LICENSE</a></p>
+    </div>
+    <div class="project">
+      github <a href="https://github.com/jddixon/alertz">      <img src="img/GitHub-Mark-32px.png" 
+        alt="link to project"  
+        style="display: inline-block; margin-left: 0 auto; margin-right: 0 auto">
+       </a> project
+    </div>
+    <div class="logo" >
+      <a href="https://jddixon.github.io/xlattice/">
+      <img src="img/xlattice-2014.jpg" alt="the XLattice Project" style="float: right;" >
+      </a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
