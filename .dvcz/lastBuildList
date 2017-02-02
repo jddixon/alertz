@@ -1,42 +1,43 @@
 -----BEGIN RSA PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoM2sBgX0ChP2JriXkOxS
-e2FjHYVzBGkNvgf0vIAa7FFYZi2pWmxBAVXgl3tTiB3quqqud/MbKqdejM6gkKBK
-v8f7hlcBQLD6BLIZ/RRfhIElc+WlDVfKSnBTB4va5qTQAgvuq5i8+oMj7G8WEy5d
-7cYucWyUJMtHvT4pCDtBWeeqQ62tByWjv34Ud/+A9Mjf0leiWxM3tiToVsqIKb4s
-zPjEShF9rvcNa9XEy1dKpcDz9Szbm2SlxOgM83fDDGtOq4SSCSqndtxrOvXXPB57
-H1mJV/FmerbXRPm5ERJVNIxtLk7Gr2Ce45FVlWyJGMhpfVlKkkk+bRQ02OFfazJI
-GQIDAQAB
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAl9xsFHvzEsi3G8q8dUOM
+3v4WLJefw8Kv0hHBGFPFQF1WRPldwPGNdVKql8zcO52KO4hzFNHNSBCGgH8cbtAk
+mLWB78ackABFJzhY9TEbPkLnoMXJHAXQpZK/JAudSixuAZIXYtIyBWfgLaHjurAT
+6+DBgC1oQXNrfT4Fvpe1QbHMejjGb41v/r/8ck/dWDr1YzcRFIbiJPj+sQq+X0Uy
+Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
+k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
+/QIDAQAB
 -----END RSA PUBLIC KEY-----
-alertz v0.2.12
-2016-11-09 05:17:09
+alertz v0.2.13
+2017-02-02 23:02:50
 # BEGIN CONTENT #
 alertz
  .coveragerc 01e69b81311d0a936062bc637afe76308179cab9
  .dvcz
-  builds 917d7eced6f73218557d4ad247f296752dbab8d6
+  builds 79a7a7ea691142c7c206546ea389af97a9cf9f21
   copyright 40a152c0598a7da436fc48b2286fb14b4f2e9101
-  lastBuildList fd13c952cdfb252505bf9f3ab2ce117385970c4c
+  lastBuildList c217b004f84323674328488c1ecfa860656e99ad
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
   projCfg d070f47456837fdb29ff7931f16d8c0f97414a46
   projCfg.local 2bd788a5449e45389efd1d322acee9bc753fb6b5
-  version cf4f3483218ef7af85815c889294780d9ffcdccf
- .gitignore 5adcf16a0339c27cb432acd4343ed0122bf4901c
+  version e00651906f9916f946cbb924de61e935c997d136
+ .gitignore 1774d1d50d528b414c80b533aa680e4441e830e3
  .gitignore.local 06c1a1a1d7c60d86d54bb0ee2f5247bf80cda2bf
- CHANGES c51658c58806efc64bedbbd6b45c9dce3cd85791
+ CHANGES 1d6e924a4aaf8cfdfa6f1f1a932a42125bd2a739
  LICENSE-MIT.md 7ff8ae89c5e4489f22b3a360a03225241877bc8d
  MANIFEST.in f05d8cfb36d154a3466fc3a1b32b6403c7ff7195
  README.alertzd 3e67db95b08abaa93dbcd1cc3f17ed536e33283c
  README.md 4799abf08f7301b7045bc3bdb53bc549c134b17b
- TODO c929e9f251f0e9a8fb92cb96c80c05cecb856bb0
+ TODO 407d7cfbbdea36e7889e3988ec82b6f273f70d17
  alertz
-  __init__.py 63969b0381589bee4828feb48a5b15d0a0dbfe59
-  chan_io.py 101f4cd0bef19e7a0711c7696dbfc4d8bc361745
-  daemon.py b1286b58ce6e24fac00eb39a38a2c508057a391e
+  __init__.py 3f50de5b463ec88d4a0d666a6d9c81906ae91a47
+  chan_io.py 99ba1a52962652bd5f6913410f3104e31e0c0cce
+  daemon.py d0e98a1dd5b14a0becaa99153316063a2ef90786
  alertz_proto_spec.py 969a1f17bc8a0e369d550c11f11b8f4b41751e4c
- alertzd a7b2e5061ff2a23f4284dbf5f3683f0ca58d7807
- bkp2U daa58afb651853dca1126c53c599a479ba4f7f4c
+ alertzd 61d7ec68dfaa0a90b18c594b5cb74f21060af5ee
+ bkp2U fb8e490e3404bd89e11f30fde748748bb268499f
  checkCoverage 045763ff56869da95703fe7caaa1887064c11283
- countem 96257628f79c7c7a90d78fe4dd798a472719649a
+ countem 329360fea6a3b16439d9e0a0a792b4e027df7168
+ coverage.summary 44f9590828a93b1c5c07af16e1adeb4a51883095
  dist
   alertz-0.1.1.tar.gz dc6e7016934922fb3b0a41bf5528c374895a3d04
   alertz-0.1.2.tar.gz 0f8c6730b12c00ec613971592a338886839f71d4
@@ -46,6 +47,7 @@ alertz
   alertz-0.2.0.tar.gz db9f30a3908e50dc72f0b590fc71b0864c476ef5
   alertz-0.2.10.tar.gz 7b76188e094117c7ba55758e390cd0bddd8aba3a
   alertz-0.2.12.tar.gz 281bb65a5286f76da3da9159e583738a2d7143fd
+  alertz-0.2.13.tar.gz 238b2e6f37a0fa7e32face83a4a0aa75576f6d33
   alertz-0.2.2.tar.gz 0a910793a627035733ffa160e4bef8744c47e050
   alertz-0.2.3.tar.gz a51d5aa4faa4173cfcd13ea34f406d24d13e0850
   alertz-0.2.4.tar.gz 9a41312a11bcecfc5c3eb6e01f9a239e46a2490c
@@ -79,12 +81,12 @@ alertz
  renamePerAPI 50e34383ed2d1bb9d4f4c2e652430a67c0aa28e0
  setup.py 6c3e39b3d869eaf346b5718eba32fcafa177cf5c
  styleit f71fe0f2364d14a83c8af7d279893ebc867bf562
- test.all f5fc4c52db941da63891652aacf4efe2889e4eae
- test_alertz_proto.py 700cabeaaa75685eec285f2c375189e786458fbe
- test_alertz_serialization.py d3f2be9bac92d227aec4d97f07d2c97cedf7cc74
+ test.all 8cd726c3024b6d102caaf06114f684d3c1d31eba
+ test_alertz_proto.py d9329f58a9072139bbcc15bb49a1b41c3d24cb7c
+ test_alertz_serialization.py 8c77c69eabba491d46d62867d1df24ff0be8778d
  test_namespace.py 9b2bbaf64dcfd4a371a4874461612893439f41a1
- test_without_dummy_client.py 7899c79b468c290ff36dc5c0779f41152bfbeb9c
- zmqlogger.py 0d929528631fa00794772ff36a4f5cccfe13ed4a
+ test_with_dummy_client.py d9c2f70a9d52a920c7d73f7ffe8ac971d3f5a9b2
+ zmqlogger.py 7a5c3d06e9452cd70610d167b135a05e15091cd6
 # END CONTENT #
 
-S3qhgCPWtWLsCTcnwO+nvwS+cnwftMuvysyeBXYB1CDYAws+DclL4e2LUo19Ih5DE8BxBUptwLp2sDnydQnVAW+WTvpchCIe3skA8Wsla6Dyvg/Pf70un4G6k6N6tevqvZYLDDfLoU47MOtwHEi4hYk6S81/cxClKgIFBraKdYp40UyVPL/yk818NMdQSQ+h6XZrsCWdeZyOCZdWiM5xB721I3r6Bkvz2rg/eTVnt0FKZ/3AiN129k5vzQb5ypTVLD6eKfP5nlpHHY/ELp0LgifJdBBSmtubAFVABIaryV+V1JDJRcmpU0F82BGehgiiKmUIhhQg4jxrvXwot5aohA==
+IyCnHbObUsiI2mdo+/4kE7eqRUpQEwOj3z1UUwt8ovaQbKTmv+QUGA9C8SpQJt/FO5Mlb4cpu6iIQO9cBD6ITUZ4/6A90Ph+P52iI8Gm6vAJjJY2pcFTy77qUJjZUgN5BGB7DT0hMrME0F08BERVCT/3RxGMq6HnnGXp9gSlXUR5xPxdI4okfs3ssG08E8HbJTsAMySciLPGCIzxGrhoD7vKrEzQVGsCpKG+xWUTz4NlDUP6RrK6O4KT3vCNGa7C7nV/sTUPxFmZgIF8fd6f3fQss85Uogxz8schZNnOhUSvxPxrC2DkmMtB5QC/7jkJ4Sd6ExYBaM1WRzjk03W21g==

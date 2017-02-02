@@ -7,8 +7,10 @@ import sys
 import time
 from argparse import ArgumentParser
 
-from alertz import __version__, __version_date__, ALERTZ_PORT, ALERTZ_PROTO
+from alertz import __version__, __version_date__, ALERTZ_PORT
 from alertz.daemon import run_the_daemon
+
+#from alertz_proro_spec import ALERTZ_PROTO_SPEC
 
 
 def main():

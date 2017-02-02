@@ -32,12 +32,22 @@ LOG_LEVELS = (
 
 def sub_logger(port, level=logging.DEBUG):
     ctx = zmq.Context()
+    # pylint can't cope with the way zmq sets 'constants'
+    # pylint: disable=no-member
     sub = ctx.socket(zmq.SUB)
     sub.bind('tcp://127.0.0.1:%i' % port)
+
+    # pylint: disable=no-member
     sub.setsockopt(zmq.SUBSCRIBE, "")
     logging.basicConfig(level=level)
 
     while True:
+        # XXX 2017-02-02 THIS MAY BE AN ERROR: zmq.Socket.recv_multipart
+        # returns one value, and that is a list of Frames or bytes.
+        # I also find a number of lines like
+        #    msg = subscriber.recv_multipart()
+        # which also doesn't match the pattern in the next line.
+        # Per readthedocs it returns a list.
         level, message = sub.recv_multipart()
         if message.endswith('\n'):
             # trim trailing newline, which will get appended again
@@ -48,6 +58,8 @@ def sub_logger(port, level=logging.DEBUG):
 
 def log_worker(port, interval=1, level=logging.DEBUG):
     ctx = zmq.Context()
+    import fieldz.reg as R
+    # pylint: disable=no-member
     pub = ctx.socket(zmq.PUB)
     pub.connect('tcp://127.0.0.1:%i' % port)
 
@@ -77,7 +89,7 @@ def main():
         Process(
             target=log_worker, args=(
                 port,), kwargs=dict(
-                level=random.choice(LOG_LEVELS))) for i in range(ndx)]
+                    level=random.choice(LOG_LEVELS))) for i in range(ndx)]
     [worker.start() for worker in workers]
 
     # start the log watcher

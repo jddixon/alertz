@@ -7,18 +7,19 @@ import time
 import unittest
 from io import StringIO
 
-from fieldz.field_types import FieldTypes as F, FieldStr as FS
-import fieldz.msg_spec as M
-import fieldz.typed as T
-
 from rnglib import SimpleRNG
-from alertz import CORRUPT_LIST_MSG, ZONE_MISMATCH_MSG
-# from alertz.chanIO import *
+from wireops.chan import Channel
+import wireops.typed as T
+
+import fieldz.msg_spec as M
+from fieldz.parser import StringProtoSpecParser
+from fieldz.msg_impl import make_msg_class, make_field_class
+
+from alertz import(CORRUPT_LIST_MSG, ZONE_MISMATCH_MSG,
+                   __version__, __version_date__, Namespace, BUFSIZE)
+from alertz.chan_io import send_to_end_point
 from alertz.daemon import run_the_daemon, clear_logs
 from alertz_proto_spec import ALERTZ_PROTO_SPEC
-from fieldz.parser import StringProtoSpecParser
-from fieldz.chan import Channel
-from fieldz.msg_impl import make_msg_class, make_field_class
 
 RNG = SimpleRNG(time.time())
 NEXT_SEQ_NBR = 0                         # increment after each use

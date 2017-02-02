@@ -9,11 +9,11 @@ from io import StringIO
 # import fieldz
 from fieldz import parser
 
+from wireops.enum import FieldTypes
+
+from fieldz.enum import Quants
 from fieldz.parser import StringProtoSpecParser
-from fieldz.field_types import FieldTypes as F, FieldStr as FS
 import fieldz.msg_spec as M
-import fieldz.typed as T
-import fieldz.reg as R
 
 from fieldz import reg
 
@@ -36,25 +36,46 @@ class TestAlertzProto(unittest.TestCase):
     def test_alertz_proto(self):
         """ this is in fact the current spec for a log entry """
         proto_name = 'org.xlattice.alertz'
-        node_reg = R.NodeReg()
-        proto_reg = R.ProtoReg(proto_name, node_reg)
-        msg_reg = R.MsgReg(proto_reg)
+        node_reg = reg.NodeReg()
+        proto_reg = reg.ProtoReg(proto_name, node_reg)
+        msg_reg = reg.MsgReg(proto_reg)
         proto_spec = M.ProtoSpec(proto_name, proto_reg)
         self.assertEqual(proto_name, proto_spec.name)
 
         msg_name = 'zoneMismatch'
 
         fields = [
-            M.FieldSpec(msg_reg, 'timestamp', F.F_UINT32, M.Q_REQUIRED, 0),
-            M.FieldSpec(msg_reg, 'seq_nbr', F.V_UINT32, M.Q_REQUIRED, 1),
-            M.FieldSpec(msg_reg, 'zone_name', F.L_STRING, M.Q_REQUIRED, 2),
+            # pylint: disable=no-member
+            M.FieldSpec(
+                msg_reg,
+                'timestamp',
+                FieldTypes.F_UINT32,
+                Quants.REQUIRED,
+                0),
+            M.FieldSpec(
+                msg_reg,
+                'seq_nbr',
+                FieldTypes.V_UINT32,
+                Quants.REQUIRED,
+                1),
+            M.FieldSpec(
+                msg_reg,
+                'zone_name',
+                FieldTypes.L_STRING,
+                Quants.REQUIRED,
+                2),
             M.FieldSpec(
                 msg_reg,
                 'expected_serial',
-                F.V_UINT32,
-                M.Q_REQUIRED,
+                FieldTypes.V_UINT32,
+                Quants.REQUIRED,
                 3),
-            M.FieldSpec(msg_reg, 'actual_serial', F.V_UINT32, M.Q_REQUIRED, 4),
+            M.FieldSpec(
+                msg_reg,
+                'actual_serial',
+                FieldTypes.V_UINT32,
+                Quants.REQUIRED,
+                4),
         ]
         msg_spec = M.MsgSpec(msg_name, proto_spec, msg_reg)
         self.assertEqual(msg_name, msg_spec.name)

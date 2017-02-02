@@ -4,18 +4,8 @@
 
 import socket
 
-#import sys
-#from io                 import StringIO
-#
-from fieldz.raw import LEN_PLUS_TYPE, read_field_hdr, read_raw_varint
-#from fieldz.fieldTypes import FieldTypes as F, FieldStr as FS
-#import fieldz.msgSpec       as M
-import fieldz.typed as T
-#
-#from alertzProtoSpec    import ALERTZ_PROTO_SPEC
-#from fieldz.parser      import StringProtoSpecParser
-#from fieldz.chan        import Channel
-#from fieldz.msgImpl     import make_msg_class, make_field_class
+from wireops.enum import PrimTypes
+from wireops.raw import read_field_hdr, read_raw_varint
 
 from alertz import BUFSIZE
 
@@ -48,8 +38,10 @@ def recv_from_cnx(cnx, chan):
     print("CHAN_IO: count = %d; pType = %s, msgNbr = %s" % (
         count, p_type, msg_nbr))
     # END
-    if p_type != LEN_PLUS_TYPE:
-        raise IOError('message header type is %d, not LEN_PLUS_TYPE' % p_type)
+    if p_type != PrimTypes.LEN_PLUS:
+        raise IOError(
+            'message header type is %d, not PrimTypes.LEN_PLUS' %
+            p_type)
     # XXX raise exception of msgNbr <0 or msgNbr > 2
 
     msg_len = read_raw_varint(chan)
@@ -73,7 +65,8 @@ def send_on_cnx(chan, cnx):
     Suitable for use by servers sending replies or clients continuing a
     conversation.
     """
-    pass        # XXX STUB
+    _, _ = chan, cnx
+    # pass        # XXX STUB
 
 
 def send_to_end_point(chan, host, port):

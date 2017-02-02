@@ -7,7 +7,7 @@ then
   ./test_alertz_proto.py
   ./test_alertz_serialization.py
   ./test_namespace.py
-  ./test_without_dummy_client.py
+  ./test_with_dummy_client.py
   
 else
   echo "DEV_BASE is not defined"

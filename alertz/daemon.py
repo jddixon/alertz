@@ -1,26 +1,28 @@
 # ~/dev/py/alertz/alertz/daemon.py
 
-__all__ = ['clear_logs', 'run_the_daemon',
-           ]
-
+__all__ = ['clear_logs', 'run_the_daemon', ]
 import os
 import socket
 import sys
+import traceback
+
+from optionz import dump_options
 from xlattice.ftLog import LogMgr
 from xlattice.procLock import ProcLock
 from io import StringIO
 
-from fieldz.field_types import FieldTypes as F, FieldStr as FS
+from wireops.chan import Channel
+
 #import fieldz.msg_spec as M
 #import fieldz.typed as T
+
+from fieldz.parser import StringProtoSpecParser
+from fieldz.msg_impl import make_msg_class, make_field_class, MsgImpl
 
 from alertz import STR_OBJ_MODEL, BUFSIZE
 from alertz.chan_io import recv_from_cnx
 
-from alertzProtoSpec import ALERTZ_PROTO_SPEC
-from fieldz.parser import StringProtoSpecParser
-from fieldz.chan import Channel
-from fieldz.msg_impl import make_msg_class, make_field_class, MsgImpl
+from alertz_proto_spec import ALERTZ_PROTO_SPEC
 
 # DAEMON ------------------------------------------------------------
 
@@ -39,7 +41,7 @@ def clear_logs(options):
                 os.unlink(os.path.join(log_dir, file))
 
 
-def actually_run_the_daemon(options):
+def _actually_run_the_daemon(options):
     verbose = options.verbose
     chan = Channel(BUFSIZE)
     string = None
@@ -74,6 +76,7 @@ def actually_run_the_daemon(options):
                     # switch on message type
                     if msg_ndx == 0:
                         print("GOT ZONE MISMATCH MSG")
+                        # pylint: disable=no-member
                         print("    timestamp      %s" % msg.timestamp)
                         print("    seqNbr         %s" % msg.seq_nbr)
                         print("    zoneName       %s" % msg.zone_name)
@@ -87,6 +90,7 @@ def actually_run_the_daemon(options):
                     elif msg_ndx == 1:
                         # timestamp, seqNb
                         print("GOT CORRUPT LIST MSG")
+                        # pylint: disable=no-member
                         print("    timestamp      %s" % msg.timestamp)
                         print("    seqNbr         %s" % msg.seq_nbr)
                         text = "corrupt list: %s" % (msg.seq_nbr)
@@ -95,6 +99,7 @@ def actually_run_the_daemon(options):
                     elif msg_ndx == 2:
                         # has one field, remarks
                         print("GOT SHUTDOWN MSG")
+                        # pylint: disable=no-member
                         print("    remarks        %s" % msg.remarks)
                         running = False
                         string.close()
@@ -145,14 +150,7 @@ def run_the_daemon(options):
         print()                               # there's a comma up there
 
     if options.justShow or options.verbose:
-        print('justShow         = ' + str(options.justShow))
-        print('logDir           = ' + str(options.log_dir))
-        print('port             = ' + str(options.port))
-        print('showTimestamp    = ' + str(options.showTimestamp))
-        print('showVersion      = ' + str(options.showVersion))
-        print('testing          = ' + str(options.testing))
-        print('timestamp        = ' + str(options.timestamp))
-        print('verbose          = ' + str(options.verbose))
+        print(dump_options(options))
 
     if not options.justShow:
         lock_mgr = None
@@ -174,9 +172,9 @@ def run_the_daemon(options):
             error_log = log_mgr.open('error')
             options.error_log = error_log
 
-            actually_run_the_daemon(options)
+            _actually_run_the_daemon(options)
         except:
-            print_exc()
+            traceback.print_exc()
             sys.exit(1)
         finally:
             lock_mgr.unlock()
