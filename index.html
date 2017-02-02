@@ -9,16 +9,15 @@
 </head>
 <body>
 <div class="content">
-<h1>
-<a id="user-content-alertz" class="anchor" href="#alertz" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>alertz</h1>
+<h1 class="libTop">alertz</h1>
 
 <p><strong>alertz</strong> is a Python3-based system for reporting events over a
 network of machines, some on a local network (a cluster of machines
 behind a firewall) and other machines on the global Internet.  As
-conceived at the moment, the latter are virtual machines on Amazon's
+conceived at the moment, the latter are virtual machines on Amazon&#39;s
 <a href="http://aws.amazon.com/ec2">AWS EC2</a> cloud.  Participating servers communicate
 using messages in standard formats.  These are specified using either
-Google's
+Google&#39;s
 <a href="http://developers.google.com/protocol-buffers">Protocol Buffers</a>
 or (more likely) the
 <a href="https://jddixon.github.io/fieldz">fieldz</a>
@@ -26,8 +25,7 @@ protocol, which is meant to be compatible with Protocol Buffers.</p>
 
 <p>alertz is still being specified.</p>
 
-<h2>
-<a id="user-content-message-types" class="anchor" href="#message-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Message Types</h2>
+<h2>Message Types</h2>
 
 <p>Initially these relate to</p>
 
@@ -41,8 +39,7 @@ protocol, which is meant to be compatible with Protocol Buffers.</p>
 message types will include an optional, possibly zero-length, remarks
 section.</p>
 
-<h3>
-<a id="user-content-dns-errors" class="anchor" href="#dns-errors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DNS Errors</h3>
+<h3>DNS Errors</h3>
 
 <p>Some of the alertz-connected machines on the global Internet act as
 <a href="https://en.wikipedia.org/wiki/Name_server">name servers</a>.
@@ -57,8 +54,7 @@ of domain names to check.  If this has internally inconsistent, the
 utiltiy sends a <strong>corruptZoneList</strong> alert, signifying that the utility
 has failed and cannot proceed without some intervention.</p>
 
-<h3>
-<a id="user-content-hacking-attempts" class="anchor" href="#hacking-attempts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hacking Attempts</h3>
+<h3>Hacking Attempts</h3>
 
 <p>If a participating machine detects an attemtpted hack attack, it can
 send a <strong>badGuy</strong> alert giving the UTC time of the attempt, the
@@ -67,30 +63,26 @@ originating IP address and port, and the target address and port number.</p>
 <p>The software for detecting such hacking attempts and that for handling them
 is not part of the alertz system.</p>
 
-<h3>
-<a id="user-content-network-partitioning" class="anchor" href="#network-partitioning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Network Partitioning</h3>
+<h3>Network Partitioning</h3>
 
 <p>This can occur for a number of reasons, but the most likely is that
 the firewall router is down or has the wrong IP address.  If such a
 conditon is detected, a <strong>newGWAddr</strong> alert is sent.</p>
 
-<h2>
-<a id="user-content-underlying-messaging-system" class="anchor" href="#underlying-messaging-system" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Underlying Messaging System</h2>
+<h2>Underlying Messaging System</h2>
 
 <p><a href="http://zeromq.org">ZeroMQ</a>.  This is a mature, fast, distributed
 messaging system with implementations in a variety of programming
 languages.</p>
 
-<h2>
-<a id="user-content-dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies</h2>
+<h2>Dependencies</h2>
 
 <ul>
 <li><a href="https://jddixon.github.io/fieldz">fieldz</a></li>
 <li><a href="http://zeromq.org">ZeroMQ</a></li>
 </ul>
 
-<h2>
-<a id="user-content-project-status" class="anchor" href="#project-status" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Project Status</h2>
+<h2>Project Status</h2>
 
 <p>Pre-alpha.  The specification is tentative and incomplete.  Code and unit
 tests exist, but some tests fail.</p>
