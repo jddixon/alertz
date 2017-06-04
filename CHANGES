@@ -1,5 +1,8 @@
 ~/dev/py/alertz/CHANGES
 
+v0.2.14
+    2017-06-04
+        * restructure for use with pytest                           SLOC 1583
 v0.2.13
     2017-02-02
         * revisions per wireops/fieldz split; pylinting             SLOC 1593
@@ -81,6 +84,7 @@ v0.1.0
         * roughed out testAlertz{Proto,Serialization}.py            SLOC  291
     2012-12-06
         * hacked from pzog                                          SLOC  158
+
 
 
 

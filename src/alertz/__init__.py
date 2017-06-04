@@ -21,8 +21,8 @@ __all__ = ['__version__', '__version_date__',
            'STR_OBJ_MODEL', 'PROTO_NAME',
            'ZONE_MISMATCH_MSG', 'CORRUPT_LIST_MSG', 'SHUTDOWN_MSG', ]
 
-__version__ = '0.2.13'
-__version_date__ = '2017-02-02'
+__version__ = '0.2.14'
+__version_date__ = '2017-06-04'
 
 BUFSIZE = 16 * 1024                   # must allow for all using protocols
 

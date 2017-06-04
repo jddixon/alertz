@@ -6,7 +6,7 @@
 import re
 from distutils.core import setup
 __version__ = re.search(r"__version__\s*=\s*'(.*)'",
-                        open('alertz/__init__.py').read()).group(1)
+                        open('src/alertz/__init__.py').read()).group(1)
 
 # see http://docs.python.org/distutils/setupscript.html
 
@@ -20,10 +20,10 @@ setup(name='alertz',
       py_modules=[],
       #
       # a package has a subdir and an __init__.py
-      packages=['alertz', ],
+      packages=['src/alertz', ],
       #
       # following could be in scripts/ subdir; SQuote
-      scripts=['alertzd', ],
+      scripts=['src/alertzd', ],
       #
       description='alerts system for a cluster of computers',
       url='https://jddixon.github.io/alertz',
