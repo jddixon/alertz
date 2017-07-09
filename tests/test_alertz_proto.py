@@ -147,5 +147,6 @@ class TestAlertzProto(unittest.TestCase):
         self.assertEqual(msg_spec.field_name(4), 'actual_serial')
         self.assertEqual(msg_spec.field_type_name(4), 'vuint32')
 
+
 if __name__ == '__main__':
     unittest.main()

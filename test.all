@@ -4,10 +4,7 @@ if [ ! -z "${DEV_BASE// }" ]
 then
   cd $DEV_BASE/py/alertz
   
-  ./test_alertz_proto.py
-  ./test_alertz_serialization.py
-  ./test_namespace.py
-  ./test_with_dummy_client.py
+  PYTHONPATH=".:src:tests" pytest
   
 else
   echo "DEV_BASE is not defined"

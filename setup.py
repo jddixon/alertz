@@ -4,26 +4,42 @@
 """ Set up distutils for alertz. """
 
 import re
-from distutils.core import setup
+
+# BEGIN NEW
+from glob import glob
+from os.path import basename, dirname, join, splitext
+from setuptools import find_packages, setup
+# END NEW
+
 __version__ = re.search(r"__version__\s*=\s*'(.*)'",
-                        open('alertz/__init__.py').read()).group(1)
+                        open('src/alertz/__init__.py').read()).group(1)
 
-# see http://docs.python.org/distutils/setupscript.html
+# see
+# setuptools.readthedocs.io/en/latest/setuptools.html#new-and-changed-setup-keywords
 
+with open('README.md', 'r') as file:
+    long_desc = file.read()
+
+# HACK
+pkgs = find_packages('src')
+print("PKGS: ", pkgs)
+# END HACK
 setup(name='alertz',
       version=__version__,
       author='Jim Dixon',
       author_email='jddixon@gmail.com',
-      #
-      # wherever we have a .py file that will be imported, we
-      # list it here, without the extension but SQuoted
-      py_modules=[],
-      #
-      # a package has a subdir and an __init__.py
-      packages=['alertz', ],
-      #
+
+      # BEGIN NEW
+      long_description=long_desc,
+      packages=find_packages('src'),
+      package_dir={'': 'src'},
+      py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
+      include_package_data=False,
+      zip_safe=False,
+      # END NEW
+
       # following could be in scripts/ subdir; SQuote
-      scripts=['alertzd', ],
+      scripts=['src/alertzd', ],
       #
       description='alerts system for a cluster of computers',
       url='https://jddixon.github.io/alertz',

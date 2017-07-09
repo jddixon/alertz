@@ -173,7 +173,7 @@ def run_the_daemon(options):
             options.error_log = error_log
 
             _actually_run_the_daemon(options)
-        except:
+        except BaseException:
             traceback.print_exc()
             sys.exit(1)
         finally:

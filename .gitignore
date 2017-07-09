@@ -20,6 +20,8 @@ THIS.IS.A.GIT*
 __pycache__
 build
 cover
+dist
 htmlcov
 junk*
+logs
 tmp
