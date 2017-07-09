@@ -23,4 +23,5 @@ cover
 dist
 htmlcov
 junk*
+logs
 tmp

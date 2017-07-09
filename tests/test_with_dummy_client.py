@@ -189,5 +189,6 @@ class TestWithDummyClient(unittest.TestCase):
 
         # XXX STUB XXX
 
+
 if __name__ == '__main__':
     unittest.main()

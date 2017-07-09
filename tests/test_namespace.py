@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-
 # testNamespace.py
+
+
 import os
 import threading
 import time
@@ -66,6 +67,7 @@ class TestNamespace(unittest.TestCase):
         self.assertFalse(ns_.testing)
         self.assertEqual(now, ns_.timestamp)
         self.assertTrue(ns_.verbose)
+
 
 if __name__ == '__main__':
     unittest.main()

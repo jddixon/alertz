@@ -21,8 +21,8 @@ __all__ = ['__version__', '__version_date__',
            'STR_OBJ_MODEL', 'PROTO_NAME',
            'ZONE_MISMATCH_MSG', 'CORRUPT_LIST_MSG', 'SHUTDOWN_MSG', ]
 
-__version__ = '0.2.14'
-__version_date__ = '2017-06-04'
+__version__ = '0.2.15'
+__version_date__ = '2017-07-08'
 
 BUFSIZE = 16 * 1024                   # must allow for all using protocols
 
@@ -49,7 +49,11 @@ ALERTZ_PORT = 55555
 
 class Namespace(dict):
 
-    def __init__(self, pairs={}):
+    def __init__(self, pairs=None):
+
+        if pairs is None:
+            pairs = {}
+        # "Useless super delegation" per pylint
         super().__init__(pairs)
 
     def __getattribute__(self, name):

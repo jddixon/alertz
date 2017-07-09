@@ -7,8 +7,8 @@ Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
 k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
-alertz v0.2.14
-2017-06-04 22:38:09
+alertz v0.2.15
+2017-07-09 00:25:52
 # BEGIN CONTENT #
 alertz
  .cache
@@ -17,26 +17,26 @@ alertz
     lastfailed 8486fa893b3dd6aecd109fa3886a054087dc8cb9
  .coveragerc 01e69b81311d0a936062bc637afe76308179cab9
  .dvcz
-  builds 4f29c98e8b0860c311de0bc02ff78e0cc7e5a69d
+  builds 6e4770844951aa0613a27de607e9c0204d28d7f9
   copyright 081f1eacc7bee6ce9cf06ffc957c1472faf9c994
-  lastBuildList f5ea29152e47493cd9584f24fd52bb956fe83951
+  lastBuildList dc20693923085c62b3a75a34f1fd208e6e8c048b
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
-  projCfg d070f47456837fdb29ff7931f16d8c0f97414a46
+  projCfg 2fff1dcad5908ed0d9395e9c6520df42cfb152a1
   projCfg.local 2bd788a5449e45389efd1d322acee9bc753fb6b5
-  version b91d0e6393a6ff3b517a13774a94d5ef2c7d1146
- .gitignore 8e90c3681e02ced135fe351503e645b95eb81573
- .gitignore.local 06c1a1a1d7c60d86d54bb0ee2f5247bf80cda2bf
- CHANGES 94af1110e04cc0f7ae3b5cf713edcf47a9255ef4
- LICENSE-MIT.md 7ff8ae89c5e4489f22b3a360a03225241877bc8d
- MANIFEST.in f05d8cfb36d154a3466fc3a1b32b6403c7ff7195
+  version 9d453ec8cc8534ddcfdf7cff1142160367f89c8a
+ .gitignore ad85f6cdf271bc9e1a8c04a2b709ad53c7de834d
+ .gitignore.local 0405a418d8354dfd5632b7fcb21ea147c2893280
+ CHANGES a8f5780b872c7873d6b5cb380a23f53ecd236bef
+ LICENSE-MIT.md ce4053c54849d1033bd67b6cab7bdedc03de2b97
+ MANIFEST.in ab66c4ba9f7b7352eb828e32839a387bf990125b
  README.alertzd 3e67db95b08abaa93dbcd1cc3f17ed536e33283c
  README.md 4799abf08f7301b7045bc3bdb53bc549c134b17b
- TODO 407d7cfbbdea36e7889e3988ec82b6f273f70d17
+ TODO aace2f54be0896e37685f3749e8d4312b0cbcaf6
  bkp2U fb8e490e3404bd89e11f30fde748748bb268499f
- checkCoverage 045763ff56869da95703fe7caaa1887064c11283
- countem 329360fea6a3b16439d9e0a0a792b4e027df7168
+ checkCoverage 337a4e7fa1162338a63432967e4b7f310e9edee9
+ countem fc6ccab9cb90a77009fa2271ad9a1ffc4f3b0c46
  coverage.summary 44f9590828a93b1c5c07af16e1adeb4a51883095
- doPyLint f10aa66a8508483edb151738f214019e52fd9204
+ doPyLint 31321ad99eb3b9ac0928a68c29a8b5b88c9472fb
  ghpDoc
   css
    LICENSE.html5-boilerplate.md ded771b3245b190da0e81c76de5a80d41392c0a6
@@ -56,24 +56,22 @@ alertz
  name-pairs-local 5c79e826de3e268ad9d84e20e4ea5cf1124cefd9
  name.pairs 12291aa87e91591cb490cf6ad2c65776b573300c
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
- renameLocal 7cb6e5cf963671330c3f88cd667d8509e8a3e3d8
- renamePerAPI 50e34383ed2d1bb9d4f4c2e652430a67c0aa28e0
- setup.py 119938929bc0eb9668dc9b0a8a53a0c7baa91c39
+ setup.py f5ee40ebcfca24fc0cb2a885bf808ed5e8e905c2
  src
   alertz
-   __init__.py 5450923ffed849098d24b27aff4a4eb293d39c34
+   __init__.py 894649f30f6d61456dcd146122ce4720da44d8fa
    chan_io.py 99ba1a52962652bd5f6913410f3104e31e0c0cce
    daemon.py 5c966225b4dbb2add995a8e40c676857b715367a
   alertzd 0f1948ab08ed33743fc5c531678f0b1554a6c175
- styleit 3bfdbb00b083cc635a5112d7d1709ecae4374d4c
- test.all cca29f3aa2dd1dc6d472b09957c69617de03260f
+ styleit f987e7c37c5f9afc5a8855379f9d6c4b8e1cdcf3
+ test.all e35bc1fd8bb802ddffeb4908eea88d051311a587
  tests
   alertz_proto_spec.py 969a1f17bc8a0e369d550c11f11b8f4b41751e4c
-  test_alertz_proto.py d9329f58a9072139bbcc15bb49a1b41c3d24cb7c
+  test_alertz_proto.py d42443c741dcda55bb6095d84b7e3f95a5e47ac1
   test_alertz_serialization.py 8c77c69eabba491d46d62867d1df24ff0be8778d
-  test_namespace.py 9b2bbaf64dcfd4a371a4874461612893439f41a1
-  test_with_dummy_client.py d9c2f70a9d52a920c7d73f7ffe8ac971d3f5a9b2
-  zmqlogger.py 7a5c3d06e9452cd70610d167b135a05e15091cd6
+  test_namespace.py 71712abe8fb4236bc8a64bfc09aed2b5a3946832
+  test_with_dummy_client.py 489d5393ae061567ba3ecbe92f3b384ec7c5fead
+  zmqlogger.py 2495bf0eb362b247d9c138da0ef7d802a4210df1
 # END CONTENT #
 
-ZDx6CetGLIl70YQ6RnLdi8rjPp2TEPWc+LS840qyLCdWQYQ/LvFSDwHJz24DtyfgX+OiS9JDPTQirpa6zyou2aWNHmbEqkwfWMrYYr2+w+8I8mAtLYRDvSdh2YtPfUMNlzGw0Xob3jKHoqbOdPs2UdEVxa4krBopgdsMsNqCLDPBKMu8L4nzw3CTfqO7mRuOGypdR+sK4yCcJGpfToNr3lleo+ygH1n3LT6ldBT1IX+2i/m4RLH4ahojgJ5WcHy4DynKScjPhWYc2xVQbFRCEtiOhVo65s0ksU23q9Y4artSvVIo3jOF3PPYV93tmX8coGqYCM2j3CQS/oR0KAgobA==
+HtjCHNyPYg9MaA93L2PeCO4wnBejx7DZY9t9n6T63MQB90wY93jpC3opvEzoDqaYxly1A3/srm9wpMBTB2hyUdq3BUhSoYpmMhoTSCwth7PFw3HTkIyHtDGTX9+4CsVhlRLoxL9ANToqULK4h+AfRte3iFWP16ExiwkuQze4h9/lyeaCQZESjDQpFOamfO/LjajQziBWE4uFZc8Pi7Ko6l+4BaiMmZwnpo/NmpY25ltQ2vqENasSyZzOzqSD9XDbbND1RWt4ft+Ks7tJ29PWGeOzjVO9oWd4Eit4m88f8krPZ0jbdRfvrKWgJSuNP/SIa/OspU8kxgmP6+WvOURz3g==

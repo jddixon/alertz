@@ -1,5 +1,10 @@
 ~/dev/py/alertz/TODO
 
+2017-07-07
+    * logs/ should NOT be in repos                                      * FIXED
+    * definitely needs pylinting
+    * can't find module alertz uness PYTHONPATH=".:src:tests"
+
 2016-08-07
     * README.md should link to a page specifying message formats
     * needs more PEP 8
