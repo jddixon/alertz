@@ -1,46 +1,27 @@
 #!/usr/bin/python3
-# ~/dev/py/alertz/setup.py
+# alertz/setup.py
 
-""" Set up distutils for alertz. """
+""" Setuptools project configuration for alertz. """
 
-import re
+from os.path import exists
+from setuptools import setup
 
-# BEGIN NEW
-from glob import glob
-from os.path import basename, dirname, join, splitext
-from setuptools import find_packages, setup
-# END NEW
+long_desc = None
+if exists('README.md'):
+    with open('README.md', 'r') as file:
+        long_desc = file.read()
 
-__version__ = re.search(r"__version__\s*=\s*'(.*)'",
-                        open('src/alertz/__init__.py').read()).group(1)
-
-# see
-# setuptools.readthedocs.io/en/latest/setuptools.html#new-and-changed-setup-keywords
-
-with open('README.md', 'r') as file:
-    long_desc = file.read()
-
-# HACK
-pkgs = find_packages('src')
-print("PKGS: ", pkgs)
-# END HACK
 setup(name='alertz',
-      version=__version__,
+      version='0.2.16',
       author='Jim Dixon',
       author_email='jddixon@gmail.com',
-
-      # BEGIN NEW
       long_description=long_desc,
-      packages=find_packages('src'),
+      packages=['alertz'],
       package_dir={'': 'src'},
-      py_modules=[splitext(basename(path))[0] for path in glob('src/*.py')],
+      py_modules=[],
       include_package_data=False,
       zip_safe=False,
-      # END NEW
-
-      # following could be in scripts/ subdir; SQuote
-      scripts=['src/alertzd', ],
-      #
+      scripts=['src/alertzd'],
       description='alerts system for a cluster of computers',
       url='https://jddixon.github.io/alertz',
       classifiers=[
@@ -48,6 +29,11 @@ setup(name='alertz',
           'Intended Audience :: Developers',
           'License :: OSI Approved :: MIT License',
           'Natural Language :: English',
-          'Programming Language :: Python 3',
+          'Programming Language :: Python 2.7',
+          'Programming Language :: Python 3.3',
+          'Programming Language :: Python 3.4',
+          'Programming Language :: Python 3.5',
+          'Programming Language :: Python 3.6',
+          'Programming Language :: Python 3.7',
           'Topic :: Software Development :: Libraries :: Python Modules',
       ],)

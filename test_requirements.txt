@@ -1,0 +1,2 @@
+# alertz/test_requirements.txt
+
