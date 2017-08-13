@@ -2,8 +2,8 @@
 project:alertz
 package:alertz
 mainlang:py
-version:0.2.14
-versionDate:2017-06-04
+version:0.2.15
+versionDate:2017-07-08
 :?dirs?:
 dir:std:ghpDoc
 dir:std:dist
@@ -28,6 +28,9 @@ code:std:pylintrc
 code:std:.coveragerc
 code:std:check.summary
 code:std:MANIFEST.in
+code:std:tox.ini
+code:std:requirements.txt
+code:std:test_requirements.txt
 txt:std:LICENSE-MIT.md
 txt:std:CHANGES
 txt:std:README.alertzd
@@ -40,8 +43,6 @@ bash:std:styleit
 bash:std:test.all
 bash:std:doPyLint
 bash:std:checkCoverage
+py:std:setup.cfg
 py:std:setup.py
 py:global:alertzd
-dunno:local:coverage.summary
-dunno:local:name-pairs-local
-dunno:local:name.pairs
