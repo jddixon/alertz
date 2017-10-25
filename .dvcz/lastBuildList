@@ -7,34 +7,33 @@ Giaje1YAJPNVBt3dlOA5lhBp4GpSYBskJ9UR2Zyt3lgAGK3dEwxYETLMh9VWEV8i
 k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
-alertz v0.2.16
-2017-08-13 23:33:09
+alertz v0.2.17
+2017-10-25 18:30:21
 # BEGIN CONTENT #
 alertz
  .cache
   v
    cache
-    lastfailed 8486fa893b3dd6aecd109fa3886a054087dc8cb9
- .coveragerc 01e69b81311d0a936062bc637afe76308179cab9
+    lastfailed 8ec3fafd47d7344ab26e4840966a2a473bdee184
  .dvcz
-  builds eb5774c73ade79f13dee4ee6fdfa3775a4c6634b
+  builds b3ae7832f718b48c1d5e6691bce9c8c8288c1ec1
   copyright 081f1eacc7bee6ce9cf06ffc957c1472faf9c994
-  lastBuildList 26af5c18a4aa9d3ab109a4e1024922bd9ece15ac
+  lastBuildList 879ca3937e753f11afe701ac7a350d7b1727b925
   license 5977a55c75bb4612004451a56b0b4c22d9d3311d
-  projCfg d6738a2b2bdbd51e8a68285c0320ef30f6cc0286
+  projCfg 0b244b0ab43345755e81be750b2d26d1cc2537f7
   projCfg.local 2bd788a5449e45389efd1d322acee9bc753fb6b5
-  version 72e88a811f47ff9b6d8076be45f47c2701d364f4
- .gitignore a0c510d29d0f6c37a54662dfb7692ff5b033f9ad
+  version f298ea868afe47c60a28e4ed7457b13e179d4dc1
+ .gitignore 31329feece71db8ceb0cea2c1b9dde9661d7b90f
  .gitignore.local 0405a418d8354dfd5632b7fcb21ea147c2893280
- CHANGES 4dadef6dc1d4e10f2f8b5cfc14a259a5acf08534
+ CHANGES b675bb621018e48f6f46c479d72d41011dc8972d
  LICENSE-MIT.md ce4053c54849d1033bd67b6cab7bdedc03de2b97
- MANIFEST.in 7ecdc5eedf233385e0f99ba4c6e4a42212adb46f
+ MANIFEST.in ee87ecf6928c0c4c69376734eba9cf532ce748b1
  README.alertzd 3e67db95b08abaa93dbcd1cc3f17ed536e33283c
  README.md 4799abf08f7301b7045bc3bdb53bc549c134b17b
  TODO aace2f54be0896e37685f3749e8d4312b0cbcaf6
  bkp2U fb8e490e3404bd89e11f30fde748748bb268499f
  checkCoverage 337a4e7fa1162338a63432967e4b7f310e9edee9
- countem 62a5db398d39e72c620991695760c0c5474f3e0e
+ countem 0f59ed4af5a8eee9312a1a1446cd6decb77d3af2
  doPyLint 31321ad99eb3b9ac0928a68c29a8b5b88c9472fb
  ghpDoc
   css
@@ -52,12 +51,13 @@ alertz
    xlattice-2014.jpg f185aaad06db71acd9454f31054c62c56d36f37f
   index.md 97ad883d09c6fb16d02ff4125ff96e51e43a5e55
  installit 6db03dd64181ccd8fa43f43c389c5c370d335acc
+ projConfig.toml 7ec46870f19bb41c0e2204fc2ccb583461dc746a
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
  requirements.txt 15d2644c242e4088f4657f1688b135ebf54f04d4
- setup.py 02ab38c1097d44da6d950a0f41015250ade42d7b
+ setup.py 3c733e5a2b569eda55ff1b206d5ff4e055c8ee01
  src
   alertz
-   __init__.py 1d6c7c478160ba943c9a93e20383b1d3f806dca4
+   __init__.py 77bcf5ff39ee905d8ecf74de757e815bed610ed8
    chan_io.py 99ba1a52962652bd5f6913410f3104e31e0c0cce
    daemon.py 5c966225b4dbb2add995a8e40c676857b715367a
   alertzd 0f1948ab08ed33743fc5c531678f0b1554a6c175
@@ -71,7 +71,7 @@ alertz
   test_namespace.py 71712abe8fb4236bc8a64bfc09aed2b5a3946832
   test_with_dummy_client.py 489d5393ae061567ba3ecbe92f3b384ec7c5fead
   zmqlogger.py 2495bf0eb362b247d9c138da0ef7d802a4210df1
- tox.ini dd6e6264d9bc6f58d8530d9ad66621f931cf6480
+ tox.ini b9eda3b5d688358d862035f8a918353f58333da5
 # END CONTENT #
 
-WOWYeDM5ZraFn7oz4B8WbsWrpsOrOH3I7BFDbkxIQ+ao5K/srhmSAeu9KEgKKjmAzdF8IGIiDvzl0ogbTy03n6GzZlXwNOCCptWEGt0EJdWRsXShDBCGu47ZANp7DUxHClEs94vLfhQ0QLej7TBc9Uxzpjk0L2m0kEuklGG/55vrbL52Um1F/FypTkw7BMKtwHL34DkWKngp0G2F4/F7ZOGNvEJ31CnQsVyR9GOTSci5IEJ8aWTJt//NelXmUfHs1UT6yaYedZjeS0QWKns+Zgoy51ICZaEbhRDGrdJzQJ6+rc+g0sl4JUmrBrFzEIiyUmZqSHxrcbB1Wr0G35GG3Q==
+HapBN+p3Za/Hebd+LWr77p8QAuyhvVwyJ0+XEQIjY52bG5+Gu/SnY6uEgroCQIozW1gWwSH48lHtBeFwmrjM6TWsyuirHQL6JWwMwGcooQn573u6vCIwZHFLfJnbm6z8mdgQRi/m8hiOg1B0rT5p1tdgnGGrborj/UvLBQPG3b1yKPScuqGODrg/B3KqfnEA9KnVKj8/Js5f9PVdADkzMZhohSwS4YGDfILC9kBUL0apvkV2yiXs6iP7QE7TrseKN4C7CqbRBHdJwsSvUHHwSnw+xVR+c83LnpatqvDB5ceuj/Ud44pvzr5YnluZ/290UHCU6pEV+KZzNIj4RAQN2Q==
