@@ -6,7 +6,7 @@ then
   
   rm -rf build/* 
   
-  pySloc -L py  -X cover -X htmlcov -X logs -X dist -v $@ alertz src/alertzd tox.ini requirements.txt test_requirements.txt tests/test_alertz_proto.py tests/test_alertz_serialization.py tests/test_namespace.py tests/test_with_dummy_client.py setup.py
+  pySloc -L py  -X cover -X htmlcov -X logs -X dist -v $@ src/alertz src/alertzd tox.ini requirements.txt test_requirements.txt tests/test_alertz_proto.py tests/test_alertz_serialization.py tests/test_namespace.py tests/test_with_dummy_client.py setup.py
 else
   echo "DEV_BASE is not defined"
 fi

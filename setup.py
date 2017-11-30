@@ -12,7 +12,7 @@ if exists('README.md'):
         long_desc = file.read()
 
 setup(name='alertz',
-      version='0.2.16',
+      version='0.2.18',
       author='Jim Dixon',
       author_email='jddixon@gmail.com',
       long_description=long_desc,
@@ -22,6 +22,7 @@ setup(name='alertz',
       include_package_data=False,
       zip_safe=False,
       scripts=['src/alertzd'],
+      ext_modules=[],
       description='alerts system for a cluster of computers',
       url='https://jddixon.github.io/alertz',
       classifiers=[

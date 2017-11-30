@@ -2,8 +2,8 @@
 project:alertz
 package:alertz
 mainlang:py
-version:0.2.15
-versionDate:2017-07-08
+version:0.2.16
+versionDate:2017-08-13
 :?dirs?:
 dir:std:ghpDoc
 dir:std:dist
@@ -11,7 +11,6 @@ dir:std:src
 dir:std:tests
 dir:std:.dvcz
 dir:pkg:alertz
-dir:local:.cache
 dir:clr:build
 :?files?:
 code:std:.dvcz/projCfg
