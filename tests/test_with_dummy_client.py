@@ -5,27 +5,28 @@ import os
 import threading
 import time
 import unittest
-from io import StringIO
+# from io import StringIO                                   # UNUSED
 
 from rnglib import SimpleRNG
 from wireops.chan import Channel
-import wireops.typed as T
+# import wireops.typed as T                                 # AS YET UNUSED
 
-import fieldz.msg_spec as M
-from fieldz.parser import StringProtoSpecParser
-from fieldz.msg_impl import make_msg_class, make_field_class
+# import fieldz.msg_spec as M                               # AS YET UNUSED
+# from fieldz.parser import StringProtoSpecParser           # AS YET UNUSED
+# from fieldz.msg_impl import make_msg_class, make_field_class  # UNUSED
 
 from alertz import(CORRUPT_LIST_MSG, ZONE_MISMATCH_MSG,
                    __version__, __version_date__, Namespace, BUFSIZE)
 from alertz.chan_io import send_to_end_point
 from alertz.daemon import run_the_daemon, clear_logs
-from alertz_proto_spec import ALERTZ_PROTO_SPEC
+# from alertz_proto_spec import ALERTZ_PROTO_SPEC       # AS YET UNUSED
 
 RNG = SimpleRNG(time.time())
-NEXT_SEQ_NBR = 0                         # increment after each use
 
 
 class TestWithDummyClient(unittest.TestCase):
+
+    next_seq_nbr = 0                         # increment after each use
 
     def setUp(self):
         pass
@@ -50,11 +51,10 @@ class TestWithDummyClient(unittest.TestCase):
     # -----------------------------------------------------
     def zone_mismatch_fields(self):
         """ returns a list """
-        global NEXT_SEQ_NBR
 
         timestamp = int(time.time())
-        seq_nbr = NEXT_SEQ_NBR
-        NEXT_SEQ_NBR += 1     # used, so increment it
+        seq_nbr = TestWithDummyClient.next_seq_nbr
+        TestWithDummyClient.next_seq_nbr += 1     # used, so increment it
 
         zone_name = RNG.next_file_name(8)
         expected_serial = RNG.next_int32()
@@ -71,10 +71,9 @@ class TestWithDummyClient(unittest.TestCase):
 
     # -----------------------------------------------------
     def corrupt_list_fields(self):
-        global NEXT_SEQ_NBR
         timestamp = int(time.time())
-        seq_nbr = NEXT_SEQ_NBR
-        NEXT_SEQ_NBR += 1     # used, so increment it
+        seq_nbr = TestWithDummyClient.next_seq_nbr
+        TestWithDummyClient.next_seq_nbr += 1     # used, so increment it
         remarks = RNG.next_file_name(16)
         return [timestamp, seq_nbr, remarks]
 
@@ -84,10 +83,10 @@ class TestWithDummyClient(unittest.TestCase):
 
     # -----------------------------------------------------
     def shutdown_fields(self):
-        #       global nextSeqNbr
+        #       global next_seq_nbr
         #       timestamp       = int(time.time())
-        #       seqNbr          = nextSeqNbr
-        #       nextSeqNbr     += 1     # used, so increment it
+        #       seqNbr          = next_seq_nbr
+        #       next_seq_nbr    += 1     # used, so increment it
         remarks = RNG.next_file_name(16)
         return [remarks, ]
 

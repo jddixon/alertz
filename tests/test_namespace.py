@@ -2,8 +2,8 @@
 # testNamespace.py
 
 
-import os
-import threading
+# import os
+# import threading
 import time
 import unittest
 from rnglib import SimpleRNG
@@ -11,11 +11,10 @@ from alertz import Namespace
 
 RNG = SimpleRNG(time.time())
 
-# THIS WILL BE WRONG
-NEXT_SEQ_NBR = 0                 # increment after each use
-
 
 class TestNamespace(unittest.TestCase):
+
+    NEXT_SEQ_NBR = 0                 # increment after each use
 
     def setUp(self):
         pass
@@ -27,11 +26,10 @@ class TestNamespace(unittest.TestCase):
 
     def msg_values(self):
         """ returns a list """
-        global NEXT_SEQ_NBR
 
         timestamp = int(time.time())
-        seq_nbr = NEXT_SEQ_NBR
-        NEXT_SEQ_NBR += 1     # used, so increment it
+        seq_nbr = TestNamespace.NEXT_SEQ_NBR
+        TestNamespace.NEXT_SEQ_NBR += 1     # used, so increment it
 
         zone_name = RNG.next_file_name(8)
         expected_serial = RNG.next_int32()
