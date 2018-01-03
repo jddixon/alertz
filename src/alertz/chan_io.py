@@ -75,7 +75,7 @@ def send_to_end_point(chan, host, port):
 
     Suitable for use by clients sending a first message to a server.
     """
-    if host is None or len(host) == 0:
+    if not host:
         raise IOError('null or empty host name')
     if port < 0 or port > 65535:
         raise IOError("port number '%d' is out of range" % port)

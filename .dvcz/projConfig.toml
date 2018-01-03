@@ -1,34 +1,30 @@
-# projConfig.toml for alertz
-
 [meta]
-    version = '0.1.0'
+version = "0.1.0"
 
 [project]
-    name = 'alertz'  # distro name
-    package = 'alertz'  # internal name
-    proj_dir = '/home/jdd/dev/py/alertz'
-    main_lang = 'py'
-    version = '0.2.18'
-    version_date = '2017-11-30'
-    author = 'Jim Dixon'
-    author_email = 'jddixon@gmail.com'
-    copyright = '2012-2017'
-    description = 'alerts system for a cluster of computers'
-    dev_status = 'pre_alpha'
-    license = 'mit'
-    state = 'shared'
-    url = 'https://jddixon.github.io/alertz'
+name = "alertz"
+package = "alertz"
+proj_dir = "/home/jdd/dev/py/alertz"
+main_lang = "py"
+version = "0.2.19"
+version_date = "2017-12-31"
+author = "Jim Dixon"
+author_email = "jddixon@gmail.com"
+copyright = "2012-2017"
+description = "alerts system for a cluster of computers"
+dev_status = "pre_alpha"
+license = "mit"
+state = "shared"
+url = "https://jddixon.github.io/alertz"
 
 [py]
-    packages=['alertz']
-    package_dir = ['src']
-    test_dir = ['tests']
-    py_modules=[]
-    scripts=['src/alertzd']
-    ext_modules=[]
-
-    # sdReq output
-    distshare=['fieldz', 'optionz', 'rnglib', 'wireops', 'xlattice_py']
-    env_vars=[]
-    requirements=['alertz_proto_spec', 'setuptools']
-    test_requirements=[]
+packages = [ "alertz",]
+package_dir = [ "src",]
+test_dir = [ "tests",]
+py_modules = []
+scripts = [ "src/alertzd",]
+ext_modules = []
+distshare = [ "fieldz", "optionz", "rnglib", "wireops", "xlattice_py",]
+env_vars = []
+requirements = [ "alertz_proto_spec", "setuptools",]
+test_requirements = []

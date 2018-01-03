@@ -2,20 +2,19 @@
 
 # ~/dev/py/fieldz/testAlertzProto.py
 
-import time
+# import time                   # UNUSED
 import unittest
 from io import StringIO
 
 # import fieldz
-from fieldz import parser
+# from fieldz import parser     # UNUSED
 
 from wireops.enum import FieldTypes
 
+from fieldz import reg
 from fieldz.enum import Quants
 from fieldz.parser import StringProtoSpecParser
 import fieldz.msg_spec as M
-
-from fieldz import reg
 
 # PROTOCOLS ---------------------------------------------------------
 from alertz_proto_spec import ALERTZ_PROTO_SPEC

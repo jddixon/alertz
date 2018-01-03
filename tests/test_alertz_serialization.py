@@ -115,7 +115,7 @@ class TestAlertzSerialization(unittest.TestCase):
         values = self.zone_mismatch_fields()        # list of quasi-random values
         zmm_msg = zone_mismatch_msg_cls(values)
 
-        self.assertEqual(msg_spec.name, zmm_msg._name)
+        self.assertEqual(msg_spec.name, zmm_msg.name)
         # we don't have any nested enums or messages
         # pylint: disable=no-member
         self.assertEqual(0, len(zmm_msg.enums))
@@ -193,7 +193,7 @@ class TestAlertzSerialization(unittest.TestCase):
         values = self.corrupt_list_fields()        # list of quasi-random values
         cl_msg = corrupt_list_msg_cls(values)
 
-        self.assertEqual(msg_spec.name, cl_msg._name)
+        self.assertEqual(msg_spec.name, cl_msg.name)
         # we don't have any nested enums or messages
         # pylint: disable=no-member
         self.assertEqual(0, len(cl_msg.enums))
@@ -261,7 +261,7 @@ class TestAlertzSerialization(unittest.TestCase):
         values = [RNG.next_file_name(8), ]  # list of quasi-random values
         sd_msg = shutdown_msg_cls(values)
 
-        self.assertEqual(msg_name, sd_msg._name)
+        self.assertEqual(msg_name, sd_msg.name)
         # we don't have any nested enums or messages
         # pylint: disable=no-member
         self.assertEqual(0, len(sd_msg.enums))

@@ -5,24 +5,23 @@ import os
 import socket
 import sys
 import traceback
+# from io import StringIO                               # NOT YET USED
 
 from optionz import dump_options
-from xlattice.ftLog import LogMgr
-from xlattice.procLock import ProcLock
-from io import StringIO
-
+from xlattice.ftlog import LogMgr
+from xlattice.proc_lock import ProcLock
 from wireops.chan import Channel
 
 #import fieldz.msg_spec as M
 #import fieldz.typed as T
 
-from fieldz.parser import StringProtoSpecParser
-from fieldz.msg_impl import make_msg_class, make_field_class, MsgImpl
+# from fieldz.parser import StringProtoSpecParser       # AS YET UNUSED
+from fieldz.msg_impl import MsgImpl     # , make_msg_class, make_field_class
 
 from alertz import STR_OBJ_MODEL, BUFSIZE
 from alertz.chan_io import recv_from_cnx
 
-from alertz_proto_spec import ALERTZ_PROTO_SPEC
+# from alertz_proto_spec import ALERTZ_PROTO_SPEC     # NOT YET USED
 
 # DAEMON ------------------------------------------------------------
 
@@ -70,7 +69,7 @@ def _actually_run_the_daemon(options):
 #                   print "BRANCH TO recvFromCnx"  ; sys.stdout.flush()
                     msg_ndx = recv_from_cnx(cnx, chan)  # may raise exception
 
-                    (msg, real_ndx) = MsgImpl.read(chan, STR_OBJ_MODEL)
+                    (msg, _) = MsgImpl.read(chan, STR_OBJ_MODEL)
 #                   print "  MSG_NDX: CALCULATED %s, REAL %s" % (
 #                                             msgNdx, realNdx)
                     # switch on message type
@@ -110,13 +109,13 @@ def _actually_run_the_daemon(options):
                     cnx.close()
                     break                   # permit only one message/cnx
 
-            except KeyboardInterrupt as k_exc:
+            except KeyboardInterrupt:
                 print("<keyboard interrupt received while connection open>")
                 if cnx:
                     cnx.close()
                 running = False
 
-    except KeyboardInterrupt as k_exc:
+    except KeyboardInterrupt:
         print("<keyboard interrupt received while listening>")
         # listening socket will be closed
     finally:

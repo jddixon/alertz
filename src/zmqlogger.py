@@ -58,7 +58,7 @@ def sub_logger(port, level=logging.DEBUG):
 
 def log_worker(port, interval=1, level=logging.DEBUG):
     ctx = zmq.Context()
-    import fieldz.reg as R
+    # import fieldz.reg as R                    # UNUSED
     # pylint: disable=no-member
     pub = ctx.socket(zmq.PUB)
     pub.connect('tcp://127.0.0.1:%i' % port)
@@ -90,7 +90,8 @@ def main():
             target=log_worker, args=(
                 port,), kwargs=dict(
                     level=random.choice(LOG_LEVELS))) for i in range(ndx)]
-    [worker.start() for worker in workers]
+    for worker in workers:
+        worker.start()
 
     # start the log watcher
     try:
