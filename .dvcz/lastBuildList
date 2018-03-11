@@ -8,7 +8,7 @@ k2lyCIE/V/CDb9eVDYQgYSJYrnQ/JAPST7NbcY8aI+/0l7QVBhLBpmOCvmS6ofvz
 /QIDAQAB
 -----END PUBLIC KEY-----
 alertz
-2018-01-01 00:09:45
+2018-03-11 22:02:08
 # BEGIN CONTENT #
 alertz
  .cache
@@ -16,14 +16,18 @@ alertz
    cache
     lastfailed 4a0f6c20ce11a532abf1d0bfa63e7dd26b169554
  .dvcz
-  builds 2a68f8b54d85cf04b8cd392fdaf0efb32a5c5723
-  lastBuildList 034b177e47ad4d0365dc9a9c9e867ef5e22f2bbf
+  builds b7beb2e735b79eaa1917fa3bb907647de68b5d58
+  lastBuildList 1d0be00e186b2be2d31190a6ba7a5d4fd1c8cdb7
   projCfg 0b244b0ab43345755e81be750b2d26d1cc2537f7
   projCfg.local 2bd788a5449e45389efd1d322acee9bc753fb6b5
-  projConfig.toml 8666e479e6530a1f4894e3fea3d731b5f97a1056
+  projConfig.toml 971c6835aee48310152962a192f6649ac8de66cf
  .gitignore 31329feece71db8ceb0cea2c1b9dde9661d7b90f
  .gitignore.local 0405a418d8354dfd5632b7fcb21ea147c2893280
- CHANGES ef5323203ac3efa96801b6bc1880e13b219e9870
+ .pytest_cache
+  v
+   cache
+    lastfailed 4a0f6c20ce11a532abf1d0bfa63e7dd26b169554
+ CHANGES 99b5bbcace93bf705a982e2bb953f9fc4932a4e5
  LICENSE-MIT.md ce4053c54849d1033bd67b6cab7bdedc03de2b97
  MANIFEST.in ee87ecf6928c0c4c69376734eba9cf532ce748b1
  README.alertzd 3e67db95b08abaa93dbcd1cc3f17ed536e33283c
@@ -50,25 +54,25 @@ alertz
   index.md 97ad883d09c6fb16d02ff4125ff96e51e43a5e55
  installit 6db03dd64181ccd8fa43f43c389c5c370d335acc
  pylintrc dd234fda24a547a9071f1e4608a3c1f3b7de9aa0
- requirements.txt 15d2644c242e4088f4657f1688b135ebf54f04d4
- setup.py 29ed507b49928c6bf2741a5b92e02041870a32b3
+ requirements.txt cdab313731b78d6aa9fa6675bbec77252f0df549
+ setup.py 8fe8172a10ca267a01f67ffce3851d06c5f8302f
  src
   alertz
-   __init__.py 64858b1049c8feab44d6932462c06418a43dcad0
+   __init__.py 772de80c3bde471ffe51bb50d1c746b914ebddef
    chan_io.py da87fc0dcbd5f1bd2c3c9524ab5a325e0fd794a1
    daemon.py dc366456dc1fd571029ae573df1942efdffc9120
   alertzd 0f1948ab08ed33743fc5c531678f0b1554a6c175
   zmqlogger.py 690756d44db1eb171db2d1fda6ddad4139f67764
  styleit f987e7c37c5f9afc5a8855379f9d6c4b8e1cdcf3
  test.all 0ee6f4ca2d37417646687b415fe0dd98c47504d1
- test_requirements.txt c55f2c6d67593b2b9a955ffe903070d060798fd8
+ test_requirements.txt b9f57e0f8c2869ea20b5e3fbfe228343625dd74f
  tests
   alertz_proto_spec.py 969a1f17bc8a0e369d550c11f11b8f4b41751e4c
   test_alertz_proto.py 1fda664e153ba738badd580ade838cf4d5f5d68f
   test_alertz_serialization.py e0f1d64062dbb687823490a751c93ec7cee0a984
   test_namespace.py 454ccfc6d56fc66d2617ae1c26e1c8f4d3597f72
   test_with_dummy_client.py 3b41d971cf4d953a4836459b93279ad54e26d729
- tox.ini b9eda3b5d688358d862035f8a918353f58333da5
+ tox.ini b1f27d3faaf8e23eec00061dd19d29c298644fa1
 # END CONTENT #
 
-cdXPRmIuTmLznd/Wbf7ut9tbDg63ksbzlSb911snm02CJhwXMXfGDDehbVwJ7R0c8WPazaMJMn5fANR1ZCzJbSF2+lIE0DMXzGJHN1jdEVnHiFoWpYcJAfVF3LmI3rbFMFYXcVeiNR4hOIyLM4Vurg3AIZtPJG+bkY/EvFjYtegYr/VH71G3JOO/kQbxoXSBejLSB3+uACb7dbRYnpf+6Pd4wZRPTOjnrou1EcE/SjqH/w/o149xu48UZF6VQaSx2p+dyMMmrJnwadV5F/ogweKUyiiWz0wLp7sqqvDqhmlAjQHe1+qniWcV6s4bZUNrTWXRg/cHQspg97e0UVaxUg==
+aIA44p/WhW6LxBMkdMfnpoaqOj1o94OpDHMRhgOCg91cub/MZin9BrZddOfAmbJkGuEHQFhK/F6r77wMS/D6WD/If6xbzg2EXTYQjnM9IhNmgi5JmS5r7aiUIoDCja5mAb28TE4ucFWp27stzaIod7c6oNqNnk9MdadelaSlhdhf/jpqjVh6PNcRPGwBnO+8UYjaNZyU31Gh0C1b2NayE0pVjivcmk5Aab9yL83u5DElknsUPUnR4g9+r63AA4S/x5Mro2RfGXShb/9foLK5d8SAYFZMgBvBBN2j8FTxeHZajxJhuP9obIh9SvI7xz9rd2T880YwqPZIeb3j602sfQ==
